@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "563659584411",
+    "firebase_url": "https://objecttracking-18ef5.firebaseio.com",
+    "project_id": "objecttracking-18ef5",
+    "storage_bucket": "objecttracking-18ef5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563659584411:android:516d09200f646e04b2673e",
+        "android_client_info": {
+          "package_name": "com.github.jaskelai.object_tracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563659584411-or5sb3a8ng111lmkk332rb31qd7evlml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA4cukRxkUqO0LgmU6FwUpS7k_ML01y5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563659584411-or5sb3a8ng111lmkk332rb31qd7evlml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563659584411:android:579dd4946e500febb2673e",
+        "android_client_info": {
+          "package_name": "com.github.jaskelai.object_tracking.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563659584411-or5sb3a8ng111lmkk332rb31qd7evlml.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBA4cukRxkUqO0LgmU6FwUpS7k_ML01y5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563659584411-or5sb3a8ng111lmkk332rb31qd7evlml.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
