@@ -108,6 +108,7 @@ dependencies {
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
     implementation "androidx.core:core-ktx:$ktxVersion"
+    implementation "androidx.activity:activity-ktx:$ktxVersion"
     implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
     implementation "com.google.android.material:material:$materialVersion"
 

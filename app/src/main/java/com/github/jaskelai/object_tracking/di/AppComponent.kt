@@ -3,6 +3,7 @@ package com.github.jaskelai.object_tracking.di
 import android.content.Context
 import com.github.jaskelai.object_tracking.AppDelegate
 import com.github.jaskelai.object_tracking.di.scope.PerApp
+import com.github.jaskelai.object_tracking.presentation.di.MainSubcomponent
 import dagger.BindsInstance
 import dagger.Component
 
@@ -17,4 +18,6 @@ interface AppComponent {
     }
 
     fun inject(appDelegate: AppDelegate)
+
+    fun mainSubcomponentBuilder(): MainSubcomponent.Builder
 }
