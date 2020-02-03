@@ -1,9 +1,8 @@
 package com.github.jaskelai.object_tracking.presentation
 
-import androidx.lifecycle.LifecycleObserver
-import androidx.lifecycle.ViewModel
+import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import javax.inject.Inject
 
-class MainViewModel @Inject constructor() : ViewModel(), LifecycleObserver {
+class MainViewModel @Inject constructor() : BaseViewModel() {
 
 }

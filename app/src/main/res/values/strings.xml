@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Object Tracking</string>
+    <string name="sign_up_start_screen">Регистрация</string>
+    <string name="sign_in_start_screen">Вход</string>
 </resources>
