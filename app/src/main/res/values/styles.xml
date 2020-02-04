@@ -8,13 +8,45 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="BtnWhiteBorderStartScreen" parent="Widget.MaterialComponents.Button.OutlinedButton">
+    <style name="BtnWhiteBorder" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:textColor">@android:color/white</item>
         <item name="strokeColor">@android:color/white</item>
         <item name="rippleColor">@android:color/white</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/text_16</item>
         <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="EditTextLayoutWhite" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxBackgroundColor">@android:color/transparent</item>
+        <item name="boxStrokeColor">@android:color/white</item>
+        <item name="errorTextAppearance">@style/ErrorText</item>
+        <item name="android:textColorHint">@color/color_B3FFFFFF</item>
+        <item name="colorControlNormal">@android:color/white</item>
+        <item name="colorControlActivated">@android:color/white</item>
+        <item name="colorControlHighlight">@android:color/white</item>
+        <item name="android:colorAccent">@android:color/white</item>
+        <item name="helperTextTextAppearance">@style/HelperTextSignIn</item>
+    </style>
+
+    <style name="HelperTextSignIn" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="ErrorText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textColorHint">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="EditTextWhiteSignIn" parent="Widget.AppCompat.EditText">
+        <item name="android:backgroundTint">@android:color/white</item>
+        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:lineSpacingExtra">8sp</item>
     </style>
 
 </resources>

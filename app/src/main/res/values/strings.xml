@@ -2,4 +2,9 @@
     <string name="app_name">Object Tracking</string>
     <string name="sign_up_start_screen">Регистрация</string>
     <string name="sign_in_start_screen">Вход</string>
+    <string name="phone_number_sign_in">Номер телефона</string>
+    <string name="password_sign_in">Пароль</string>
+    <string name="sign_in_text_sign_in">Войдите в приложение</string>
+    <string name="sign_in_btn_sign_in">Войти</string>
+    <string name="back_sign_in">Вернуться назад</string>
 </resources>

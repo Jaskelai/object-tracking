@@ -40,4 +40,9 @@
     <!--dimens for start screen-->
     <dimen name="btn_width_start_screen">228dp</dimen>
     <dimen name="btn_height_start_screen">56dp</dimen>
+
+    <!--dimens for sign in-->
+    <dimen name="et_margin_start_end_sign_in">68dp</dimen>
+    <dimen name="btn_back_sign_in">24dp</dimen>
+
 </resources>

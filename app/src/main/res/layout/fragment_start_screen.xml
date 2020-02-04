@@ -14,7 +14,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToSignInStartScreen"
-        style="@style/BtnWhiteBorderStartScreen"
+        style="@style/BtnWhiteBorder"
         android:layout_width="@dimen/btn_width_start_screen"
         android:layout_height="@dimen/btn_height_start_screen"
         android:layout_marginBottom="@dimen/margin_medium"
@@ -25,7 +25,7 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnToSignUpStartScreen"
-        style="@style/BtnWhiteBorderStartScreen"
+        style="@style/BtnWhiteBorder"
         android:layout_width="@dimen/btn_width_start_screen"
         android:layout_height="@dimen/btn_height_start_screen"
         android:layout_marginTop="@dimen/margin_medium"
