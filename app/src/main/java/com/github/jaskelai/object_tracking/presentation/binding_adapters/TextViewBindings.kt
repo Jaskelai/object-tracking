@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.presentation.ui.binding_adapters
+package com.github.jaskelai.object_tracking.presentation.binding_adapters
 
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
