@@ -38,6 +38,7 @@
     <dimen name="text_24">24sp</dimen>
 
     <!--dimens for start screen-->
+    <dimen name="img_logo_start_screen">160dp</dimen>
     <dimen name="btn_width_start_screen">228dp</dimen>
     <dimen name="btn_height_start_screen">56dp</dimen>
 

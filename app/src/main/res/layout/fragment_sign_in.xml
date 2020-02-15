@@ -1,93 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/gradient_auth">
+<layout>
 
-    <ImageView
-        android:layout_width="@dimen/btn_back_sign_in"
-        android:layout_height="@dimen/btn_back_sign_in"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:contentDescription="@string/back_sign_in"
-        android:src="@drawable/ic_arrow_back"
-        android:tint="@color/color_B3FFFFFF"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <TextView
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:fontFamily="@font/roboto_bold"
-        android:gravity="center"
-        android:text="@string/sign_in_text_sign_in"
-        android:textColor="@color/color_B3FFFFFF"
-        android:textSize="@dimen/text_24"
-        app:layout_constraintBottom_toTopOf="@id/etlPhoneNumberSignIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <variable
+            name="viewModel"
+            type="com.github.jaskelai.object_tracking.presentation.ui.sign_in.SignInViewModel" />
+    </data>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etlPhoneNumberSignIn"
-        style="@style/EditTextLayoutWhite"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
-        android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
-        android:layout_marginBottom="@dimen/margin_xlarge"
-        android:hint="@string/phone_number_sign_in"
-        app:layout_constraintBottom_toTopOf="@id/etlPasswordSignIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/gradient_auth">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPhoneNumberSignIn"
-            style="@style/EditTextWhiteSignIn"
-            android:layout_width="match_parent"
+        <ImageView
+            android:layout_width="@dimen/btn_back_sign_in"
+            android:layout_height="@dimen/btn_back_sign_in"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:alpha="0.8"
+            android:background="?selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back_sign_in"
+            android:onClick="@{() -> viewModel.onBackButtonClicked()}"
+            android:src="@drawable/ic_arrow_back"
+            android:tint="@android:color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="phone"
-            android:text="+7" />
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:alpha="0.8"
+            android:fontFamily="@font/roboto_bold"
+            android:gravity="center"
+            android:text="@string/sign_in_text_sign_in"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_24"
+            app:layout_constraintBottom_toTopOf="@id/etlPhoneNumberSignIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/etlPasswordSignIn"
-        style="@style/EditTextLayoutWhite"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
-        android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
-        android:layout_marginBottom="@dimen/margin_xlarge"
-        android:hint="@string/password_sign_in"
-        app:layout_constraintBottom_toTopOf="@id/btnSignInSignIn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etlPhoneNumberSignIn">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPasswordSignIn"
-            style="@style/EditTextWhiteSignIn"
-            android:layout_width="match_parent"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etlPhoneNumberSignIn"
+            style="@style/EditTextLayoutWhite"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:inputType="textPassword" />
+            android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:hint="@string/phone_number_sign_in"
+            app:layout_constraintBottom_toTopOf="@id/etlPasswordSignIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed">
 
-    </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPhoneNumberSignIn"
+                style="@style/EditTextWhiteSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:text="+7"
+                app:setPhoneMask="@{true}" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnSignInSignIn"
-        style="@style/BtnWhiteBorder"
-        android:layout_width="@dimen/btn_width_start_screen"
-        android:layout_height="@dimen/btn_height_start_screen"
-        android:text="@string/sign_in_btn_sign_in"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/etlPasswordSignIn" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/etlPasswordSignIn"
+            style="@style/EditTextLayoutWhite"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginBottom="@dimen/margin_xlarge"
+            android:hint="@string/password_sign_in"
+            app:layout_constraintBottom_toTopOf="@id/btnSignInSignIn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etlPhoneNumberSignIn">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPasswordSignIn"
+                style="@style/EditTextWhiteSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnSignInSignIn"
+            style="@style/BtnWhiteBorder"
+            android:layout_width="@dimen/btn_width_start_screen"
+            android:layout_height="@dimen/btn_height_start_screen"
+            android:text="@string/sign_in_btn_sign_in"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etlPasswordSignIn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

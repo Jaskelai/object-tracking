@@ -3,6 +3,9 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="color_status_bar">#27108B</color>
+
     <color name="color_401CE9">#401CE9</color>
     <color name="color_872CC6">#872CC6</color>
     <color name="color_727272">#727272</color>
