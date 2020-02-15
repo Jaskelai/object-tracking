@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.presentation.utils
+package com.github.jaskelai.object_tracking.presentation.utils.ext
 
 import android.app.Activity
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModel
 import com.github.jaskelai.object_tracking.AppDelegate
 import com.github.jaskelai.object_tracking.di.AppComponent
 import com.github.jaskelai.object_tracking.presentation.MainActivity

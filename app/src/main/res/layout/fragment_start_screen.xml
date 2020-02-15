@@ -22,8 +22,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/color_B3FFFFFF"
-            app:srcCompat="@drawable/ic_logo" />
+            app:srcCompat="@drawable/ic_logo"
+            app:tint="@color/color_B3FFFFFF" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gdStartScreen"
@@ -39,23 +39,11 @@
             android:layout_height="@dimen/btn_height_start_screen"
             android:onClick="@{() -> viewModel.onSignInButtonClicked()}"
             android:text="@string/sign_in_start_screen"
-            app:layout_constraintBottom_toTopOf="@id/btnToSignUpStartScreen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/gdStartScreen"
             app:layout_constraintVertical_chainStyle="packed" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnToSignUpStartScreen"
-            style="@style/BtnWhiteBorder"
-            android:layout_width="@dimen/btn_width_start_screen"
-            android:layout_height="@dimen/btn_height_start_screen"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="@string/sign_up_start_screen"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnToSignInStartScreen" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

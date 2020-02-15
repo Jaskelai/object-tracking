@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.presentation.ui.sign_in
+package com.github.jaskelai.object_tracking.presentation.ui.auth.sign_in_phone
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,19 +8,19 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.github.jaskelai.object_tracking.R
-import com.github.jaskelai.object_tracking.databinding.FragmentSignInBinding
+import com.github.jaskelai.object_tracking.databinding.FragmentSignInPhoneBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
-import com.github.jaskelai.object_tracking.presentation.utils.bindData
-import com.github.jaskelai.object_tracking.presentation.utils.getMainActivity
+import com.github.jaskelai.object_tracking.presentation.utils.ext.bindData
+import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
 import javax.inject.Inject
 
-class SignInFragment : BaseFragment() {
+class SignInPhoneFragment : BaseFragment() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val signInViewModel: SignInViewModel by viewModels { viewModelFactory }
+    private val signInPhoneViewModel: SignInPhoneViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         getMainActivity().mainSubcomponent
@@ -36,17 +36,17 @@ class SignInFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return bindData<FragmentSignInBinding>(
+        return bindData<FragmentSignInPhoneBinding>(
             inflater,
             container,
-            R.layout.fragment_sign_in
+            R.layout.fragment_sign_in_phone
         ).apply {
-            viewModel = signInViewModel
+            viewModel = signInPhoneViewModel
         }.root
     }
 
     override fun observeNavigation() {
-        signInViewModel.backNavigationLiveData.observe(this) {
+        signInPhoneViewModel.backNavigationLiveData.observe(this) {
             if (it) findNavController().popBackStack()
         }
     }

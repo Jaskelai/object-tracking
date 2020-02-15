@@ -2,7 +2,7 @@ package com.github.jaskelai.object_tracking.presentation.di
 
 import com.github.jaskelai.object_tracking.di.scope.PerActivity
 import com.github.jaskelai.object_tracking.presentation.MainActivity
-import com.github.jaskelai.object_tracking.presentation.ui.sign_in.di.SignInSubcomponent
+import com.github.jaskelai.object_tracking.presentation.ui.auth.sign_in_phone.di.SignInPhoneSubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.start_screen.di.StartScreenSubcomponent
 import dagger.Subcomponent
 
@@ -19,5 +19,5 @@ interface MainSubcomponent {
     fun inject(mainActivity: MainActivity)
 
     fun startScreenSubcomponentBuilder(): StartScreenSubcomponent.Builder
-    fun signInSubcomponentBuilder(): SignInSubcomponent.Builder
+    fun signInSubcomponentBuilder(): SignInPhoneSubcomponent.Builder
 }

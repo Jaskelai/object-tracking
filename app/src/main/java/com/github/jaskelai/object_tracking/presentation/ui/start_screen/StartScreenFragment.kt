@@ -10,8 +10,8 @@ import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.FragmentStartScreenBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
-import com.github.jaskelai.object_tracking.presentation.utils.bindData
-import com.github.jaskelai.object_tracking.presentation.utils.getMainActivity
+import com.github.jaskelai.object_tracking.presentation.utils.ext.bindData
+import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
 import javax.inject.Inject
 
 class StartScreenFragment : BaseFragment() {
