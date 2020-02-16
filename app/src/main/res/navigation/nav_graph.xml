@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/signInFragment"
-        android:name="com.github.jaskelai.object_tracking.presentation.ui.sign_in.SignInFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.auth.auth_phone.AuthPhoneFragment"
         android:label="SignInFragment"
-        tools:layout="@layout/fragment_sign_in" />
+        tools:layout="@layout/fragment_auth_phone" />
 </navigation>
