@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 apply plugin: 'com.google.gms.google-services'
 
 androidExtensions {
@@ -57,6 +58,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+    dataBinding {
+        enabled = true
+    }
 }
 
 allprojects {
@@ -72,9 +77,12 @@ ext {
     constraintVersion = '1.1.3'
     appcompatVersion = '1.1.0'
     recyclerVersion = "1.1.0"
-    ktxVersion = '1.1.0'
     legacyVersion = '1.0.0'
-    materialVersion = '1.0.0'
+    materialVersion = '1.2.0-alpha04'
+
+    ktxCoreVersion = '1.2.0'
+    ktxActivityVersion = '1.1.0'
+    ktxFragmentVersion = '1.2.1'
 
     lifecycleVersion = "2.2.0"
     roomVersion = "2.2.3"
@@ -87,11 +95,13 @@ ext {
     okhttpVersion = '4.2.2'
     retrofitVersion = '2.6.2'
 
+    firebaseVersion = "19.2.0"
+
     glideVersion = '4.10.0'
     glideTransformationVersion = '4.0.1'
-    androidSvgVersion = '1.4'
 
     gsonVersion = '2.8.6'
+    tinkoffFormattingVersion = '1.3.5'
 
     junitVersion = '4.12'
     mockitoCoreVersion = '3.1.0'
@@ -107,19 +117,27 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
     implementation "androidx.appcompat:appcompat:$appcompatVersion"
     implementation "androidx.recyclerview:recyclerview:$recyclerVersion"
-    implementation "androidx.core:core-ktx:$ktxVersion"
-    implementation "androidx.activity:activity-ktx:$ktxVersion"
     implementation "androidx.legacy:legacy-support-v4:$legacyVersion"
     implementation "com.google.android.material:material:$materialVersion"
 
-    //arch components
+    //ktx
+    implementation "androidx.core:core-ktx:$ktxCoreVersion"
+    implementation "androidx.activity:activity-ktx:$ktxActivityVersion"
+    implementation "androidx.fragment:fragment-ktx:$ktxFragmentVersion"
+
+    //lifecycle
     implementation "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion"
     kapt "androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
 
+    //room
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
     implementation "androidx.room:room-rxjava2:$roomVersion"
+
+    //navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 
     //coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
@@ -138,6 +156,9 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
     implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
+    //firebase
+    implementation "com.google.firebase:firebase-auth:$firebaseVersion"
+
     // glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "com.github.bumptech.glide:okhttp3-integration:$glideVersion"
@@ -146,6 +167,7 @@ dependencies {
 
     //utils
     implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "ru.tinkoff.decoro:decoro:$tinkoffFormattingVersion"
 
     // tests
     testImplementation "junit:junit:$junitVersion"
