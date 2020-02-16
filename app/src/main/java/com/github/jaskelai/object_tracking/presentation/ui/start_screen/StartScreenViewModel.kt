@@ -1,18 +1,21 @@
 package com.github.jaskelai.object_tracking.presentation.ui.start_screen
 
+import androidx.lifecycle.LiveData
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
 import javax.inject.Inject
 
 class StartScreenViewModel @Inject constructor() : BaseViewModel() {
 
-    val signInNavigationLiveData = SingleEventLiveData<Boolean>()
+    val _signInNavigationLiveData = SingleEventLiveData<Boolean>()
+
+    val signInNavigationLiveData: LiveData<Boolean> = _signInNavigationLiveData
 
     init {
-        signInNavigationLiveData.value = false
+        _signInNavigationLiveData.value = false
     }
 
     fun onSignInButtonClicked() {
-        signInNavigationLiveData.value = true
+        _signInNavigationLiveData.value = true
     }
 }
