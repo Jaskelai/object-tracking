@@ -47,7 +47,6 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
         binding.executePendingBindings()
 
         observeNavigation()
-        observeProgress()
         observeError()
         init()
     }
@@ -62,14 +61,6 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
         }
     }
 
-    private fun observeProgress() {
-        viewModel.progressLiveData.observe(viewLifecycleOwner) {
-            showProgressBar()
-        }
-    }
-
-    protected open fun showProgressBar() {}
-
     protected fun navigateTo(@IdRes destId: Int) {
         findNavController().navigate(destId)
     }
@@ -77,7 +68,7 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
     private fun showErrorDialog(errorMessage: String) {
         AlertDialog.Builder(ContextThemeWrapper(requireContext(), R.style.ErrorDialogTheme))
             .setMessage(errorMessage)
-            .setPositiveButton(R.string.close_error_alert_dialog) { dialog, which -> }
+            .setPositiveButton(R.string.close_error_alert_dialog) { _, _ -> }
             .create()
             .show()
     }

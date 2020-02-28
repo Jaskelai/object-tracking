@@ -85,6 +85,17 @@
             app:layout_constraintTop_toBottomOf="@id/etlPhoneNumberAuthPhone"
             app:strokeColor="@color/selector_white_btn_background" />
 
+        <ProgressBar
+            android:id="@+id/progressBarSmsAuthPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressTint="@android:color/white"
+            app:isVisible="@{viewModel.progressLiveData}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnSendSmsAuthPhone" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

@@ -5,12 +5,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.github.jaskelai.object_tracking.R
-import com.github.jaskelai.object_tracking.data.auth_send_sms.PhoneAuthCallback
 import com.github.jaskelai.object_tracking.databinding.FragmentAuthPhoneBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
 import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
+import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
@@ -19,9 +20,6 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding, AuthPhoneViewMo
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
-
-    @Inject
-    lateinit var phoneAuthCallback: PhoneAuthCallback
 
     @Inject
     lateinit var firebaseAuth: FirebaseAuth
@@ -51,7 +49,6 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding, AuthPhoneViewMo
         viewModel.onSendSmsButtonClickedLiveData.observe(this) {
             if (it) verifyPhoneNumber()
         }
-        viewModel.authResultLiveData.observe(this) {}
     }
 
     private fun verifyPhoneNumber() {
@@ -60,7 +57,32 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding, AuthPhoneViewMo
             TIMEOUT_DURATION_SECONDS,
             TimeUnit.SECONDS,
             requireActivity(),
-            phoneAuthCallback
+            getPhoneAuthCallback()
         )
+    }
+
+    private fun getPhoneAuthCallback(): PhoneAuthProvider.OnVerificationStateChangedCallbacks {
+
+        return object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+            override fun onVerificationCompleted(credential: PhoneAuthCredential) {
+                viewModel.onVerificationComplete()
+            }
+
+            override fun onVerificationFailed(exception: FirebaseException) {
+                viewModel.onVerificationFailed(exception)
+            }
+
+            override fun onCodeAutoRetrievalTimeOut(verificationId: String) {
+                viewModel.onVerificationTimeout()
+            }
+
+            override fun onCodeSent(
+                verificationID: String,
+                token: PhoneAuthProvider.ForceResendingToken
+            ) {
+                //TODO deal with resending token
+            }
+        }
     }
 }
