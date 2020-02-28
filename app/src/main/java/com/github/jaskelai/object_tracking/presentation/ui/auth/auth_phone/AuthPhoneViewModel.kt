@@ -3,26 +3,23 @@ package com.github.jaskelai.object_tracking.presentation.ui.auth.auth_phone
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.github.jaskelai.object_tracking.R
-import com.github.jaskelai.object_tracking.domain.interactors.AuthPhoneInteractor
-import com.github.jaskelai.object_tracking.domain.model.auth_send_sms.SendSmsResult
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
+import com.github.jaskelai.object_tracking.presentation.mapper.FirebaseErrorMapper
 import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
-import com.github.jaskelai.object_tracking.presentation.utils.ext.doAfterNext
 import com.github.jaskelai.object_tracking.presentation.utils.ext.onlyDigits
+import com.google.firebase.FirebaseException
 import javax.inject.Inject
 
 const val TIMEOUT_DURATION_SECONDS = 15L
 
 class AuthPhoneViewModel @Inject constructor(
-    private val authPhoneInteractor: AuthPhoneInteractor
+    private val firebaseErrorMapper: FirebaseErrorMapper
 ) : BaseViewModel() {
 
     private val _backNavigationLiveData = SingleEventLiveData<Boolean>()
     private val _toSmsCodeNavigationLiveData = SingleEventLiveData<Boolean>()
     private val _onSendSmsButtonClickedLiveData = SingleEventLiveData<Boolean>()
     private val _isSendSmsButtonEnabledLiveData = MutableLiveData<Boolean>()
-
-    var authResultLiveData: LiveData<SendSmsResult>
 
     val backNavigationLiveData: LiveData<Boolean> = _backNavigationLiveData
     val toSmsCodeNavigationLiveData: LiveData<Boolean> = _toSmsCodeNavigationLiveData
@@ -42,28 +39,10 @@ class AuthPhoneViewModel @Inject constructor(
     }
 
     init {
+        _progressLiveData.value = true
         _backNavigationLiveData.value = false
         _isSendSmsButtonEnabledLiveData.value = false
         _onSendSmsButtonClickedLiveData.value = false
-
-        authResultLiveData = authPhoneInteractor.observeSendSmsCodeStatus().doAfterNext {
-            when (it) {
-                is SendSmsResult.CodeSent -> {
-                }
-                is SendSmsResult.Timeout -> {
-                    _errorMessageLiveData.value = R.string.error_timeout
-                    _isSendSmsButtonEnabledLiveData.value = true
-                }
-                is SendSmsResult.Error -> {
-                    _errorMessageLiveData.value = it.error.messageId
-                    _isSendSmsButtonEnabledLiveData.value = true
-                }
-                is SendSmsResult.Success -> {
-                    _toSmsCodeNavigationLiveData.value = true
-                    _isSendSmsButtonEnabledLiveData.value = true
-                }
-            }
-        }
     }
 
     fun onBackButtonClicked() {
@@ -72,18 +51,23 @@ class AuthPhoneViewModel @Inject constructor(
 
     fun onSignInButtonClicked() {
         _onSendSmsButtonClickedLiveData.value = true
-        _progressLiveData.value = true
         _isSendSmsButtonEnabledLiveData.value = false
+    }
+
+    fun onVerificationComplete() {
+        //TODO move to enter sms
+    }
+
+    fun onVerificationFailed(ex: FirebaseException) {
+        _errorMessageLiveData.value = firebaseErrorMapper.mapExceptionToResourceId(ex)
+    }
+
+    fun onVerificationTimeout() {
+        _errorMessageLiveData.value = R.string.error_timeout
     }
 
     private fun onPhoneNumberTyped(phoneNumber: String) {
         val actualPhoneNumber = phoneNumber.onlyDigits
         _isSendSmsButtonEnabledLiveData.value = actualPhoneNumber.length == PHONE_NUMBER_LENGTH
-    }
-
-    override fun onCleared() {
-        super.onCleared()
-
-        authPhoneInteractor.clearSmsCodeStatus()
     }
 }
