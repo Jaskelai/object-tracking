@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.presentation.mapper
+package com.github.jaskelai.object_tracking.data.mapper
 
 import com.github.jaskelai.object_tracking.R
 import com.google.firebase.FirebaseApiNotAvailableException
