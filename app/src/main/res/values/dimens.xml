@@ -37,10 +37,13 @@
     <dimen name="text_22">22sp</dimen>
     <dimen name="text_24">24sp</dimen>
 
+    <!--dimens for auth-->
+    <dimen name="progress_bar_auth_width">132dp</dimen>
+    <dimen name="btn_width_auth">228dp</dimen>
+    <dimen name="btn_height_auth">56dp</dimen>
+
     <!--dimens for start screen-->
     <dimen name="img_logo_start_screen">160dp</dimen>
-    <dimen name="btn_width_start_screen">228dp</dimen>
-    <dimen name="btn_height_start_screen">56dp</dimen>
 
     <!--dimens for sign in-->
     <dimen name="et_margin_start_end_sign_in">68dp</dimen>

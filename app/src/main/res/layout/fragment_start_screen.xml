@@ -35,8 +35,8 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnToSignInStartScreen"
             style="@style/BtnWhiteBorder"
-            android:layout_width="@dimen/btn_width_start_screen"
-            android:layout_height="@dimen/btn_height_start_screen"
+            android:layout_width="@dimen/btn_width_auth"
+            android:layout_height="@dimen/btn_height_auth"
             android:onClick="@{() -> viewModel.onSignInButtonClicked()}"
             android:text="@string/sign_in_start_screen"
             app:layout_constraintBottom_toBottomOf="parent"

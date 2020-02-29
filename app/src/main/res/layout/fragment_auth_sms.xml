@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.github.jaskelai.object_tracking.presentation.ui.auth.auth_phone.AuthPhoneViewModel" />
+            type="com.github.jaskelai.object_tracking.presentation.ui.auth.auth_sms.AuthSmsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -29,57 +29,53 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/tv"
             style="@style/TitleAuth"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
             android:gravity="center"
-            android:text="@string/type_phone_text_auth_phone"
-            app:layout_constraintBottom_toTopOf="@id/etlPhoneNumberAuthPhone"
+            android:text="@string/type_code_text_auth_sms"
+            app:layout_constraintBottom_toTopOf="@id/codeAuthSms"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/etlPhoneNumberAuthPhone"
-            style="@style/EditTextLayoutWhite"
-            android:layout_width="0dp"
+        <com.jkb.vcedittext.VerificationCodeEditText
+            android:id="@+id/codeAuthSms"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
-            android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
-            android:layout_marginBottom="@dimen/margin_xlarge"
-            android:hint="@string/phone_number_auth_phone"
-            app:layout_constraintBottom_toTopOf="@id/btnSendSmsAuthPhone"
+            android:inputType="number"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_24"
+            android:text="@={viewModel.code}"
+            app:bottomLineHeight="2dp"
+            app:bottomLineNormalColor="@color/color_808080"
+            app:bottomLineSelectedColor="@android:color/white"
+            app:figures="6"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btnVerifyAuthSms"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPhoneNumberAuthPhone"
-                style="@style/EditTextWhiteSignIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="phone"
-                android:text="@={viewModel.phoneNumber}"
-                app:setPhoneMask="@{true}" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            app:layout_constraintVertical_chainStyle="packed"
+            app:selectedBackgroundColor="@android:color/transparent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSendSmsAuthPhone"
+            android:id="@+id/btnVerifyAuthSms"
             style="@style/BtnWhiteBorder"
             android:layout_width="@dimen/btn_width_auth"
             android:layout_height="@dimen/btn_height_auth"
-            android:enabled="@{viewModel.isSendSmsButtonEnabledLiveData()}"
-            android:onClick="@{() -> viewModel.onSignInButtonClicked()}"
-            android:text="@string/send_sms_btn_auth_phone"
+            android:layout_marginTop="@dimen/margin_large"
+            android:enabled="@{viewModel.isVerifyButtonEnabledLiveData()}"
+            android:onClick="@{() -> viewModel.onVerifyBtnClicked()}"
+            android:text="@string/verify_btn_auth_sms"
             android:textColor="@color/selector_white_btn_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etlPhoneNumberAuthPhone"
+            app:layout_constraintTop_toBottomOf="@id/codeAuthSms"
             app:strokeColor="@color/selector_white_btn_background" />
 
         <com.airbnb.lottie.LottieAnimationView
@@ -92,7 +88,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnSendSmsAuthPhone"
+            app:layout_constraintTop_toBottomOf="@id/btnVerifyAuthSms"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/lottie_progress_dots" />
