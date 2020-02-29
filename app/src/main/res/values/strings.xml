@@ -9,10 +9,13 @@
     <string name="password_auth_phone">Пароль</string>
     <string name="type_phone_text_auth_phone">Введите номер телефона</string>
     <string name="send_sms_btn_auth_phone">Отправить СМС</string>
-    <string name="back_auth_phone">Вернуться назад</string>
+    <string name="back">Вернуться назад</string>
     <string name="error_network">Ошибка соединения</string>
     <string name="error_too_many_requests">Слишком много запросов</string>
     <string name="error_server_not_available">Сервер не доступен</string>
     <string name="error_common">Ошибка</string>
     <string name="error_timeout">Время ожидания истекло</string>
+    <string name="error_canceled">Запрос отменен</string>
+    <string name="type_code_text_auth_sms">Введите код из СМС</string>
+    <string name="verify_btn_auth_sms">Проверить</string>
 </resources>

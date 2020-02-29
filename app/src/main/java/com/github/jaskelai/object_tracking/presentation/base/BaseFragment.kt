@@ -35,25 +35,30 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
     protected abstract fun getLayoutResId(): Int
 
     @CallSuper
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        observeNavigation()
+        init()
+    }
+
+    @CallSuper
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
 
         doDataBinding()
+        observeError()
     }
 
     private fun doDataBinding() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.setVariable(BR.viewModel, viewModel)
         binding.executePendingBindings()
-
-        observeNavigation()
-        observeError()
-        init()
     }
 
-    abstract fun init()
+    protected open fun init() {}
 
-    abstract fun observeNavigation()
+    protected open fun observeNavigation() {}
 
     private fun observeError() {
         viewModel.errorMessageLiveData.observe(viewLifecycleOwner) {
@@ -63,6 +68,10 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
 
     protected fun navigateTo(@IdRes destId: Int) {
         findNavController().navigate(destId)
+    }
+
+    protected fun back() {
+        findNavController().popBackStack()
     }
 
     private fun showErrorDialog(errorMessage: String) {

@@ -1,27 +1,27 @@
-package com.github.jaskelai.object_tracking.presentation.ui.start_screen
+package com.github.jaskelai.object_tracking.presentation.ui.auth.auth_sms
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.observe
 import com.github.jaskelai.object_tracking.R
-import com.github.jaskelai.object_tracking.databinding.FragmentStartScreenBinding
+import com.github.jaskelai.object_tracking.databinding.FragmentAuthSmsBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
 import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
 import javax.inject.Inject
 
-class StartScreenFragment : BaseFragment<FragmentStartScreenBinding, StartScreenViewModel>() {
+class AuthSmsFragment : BaseFragment<FragmentAuthSmsBinding, AuthSmsViewModel>() {
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    override val viewModel: StartScreenViewModel by viewModels { viewModelFactory }
+    override val viewModel: AuthSmsViewModel by viewModels { viewModelFactory }
 
-    override fun getLayoutResId(): Int = R.layout.fragment_start_screen
+    override fun getLayoutResId(): Int = R.layout.fragment_auth_sms
 
     override fun onCreate(savedInstanceState: Bundle?) {
         getMainActivity().mainSubcomponent
-            .startScreenSubcomponentBuilder()
+            .authSmsSubcomponentBuilder()
             .build()
             .inject(this)
 
@@ -29,10 +29,8 @@ class StartScreenFragment : BaseFragment<FragmentStartScreenBinding, StartScreen
     }
 
     override fun observeNavigation() {
-        viewModel.signInNavigationLiveData.observe(this) {
-            if (it) navigateTo(R.id.action_startScreenFragment_to_authPhoneFragment)
+        viewModel.backNavigationLiveData.observe(this) {
+            if (it) back()
         }
     }
-
-    override fun init() {}
 }
