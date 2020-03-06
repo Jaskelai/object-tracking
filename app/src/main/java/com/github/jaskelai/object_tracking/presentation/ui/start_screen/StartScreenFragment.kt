@@ -33,6 +33,4 @@ class StartScreenFragment : BaseFragment<FragmentStartScreenBinding, StartScreen
             if (it) navigateTo(R.id.action_startScreenFragment_to_authPhoneFragment)
         }
     }
-
-    override fun init() {}
 }

@@ -7,13 +7,9 @@ import javax.inject.Inject
 
 class StartScreenViewModel @Inject constructor() : BaseViewModel() {
 
-    val _signInNavigationLiveData = SingleEventLiveData<Boolean>()
+    private val _signInNavigationLiveData = SingleEventLiveData(false)
 
     val signInNavigationLiveData: LiveData<Boolean> = _signInNavigationLiveData
-
-    init {
-        _signInNavigationLiveData.value = false
-    }
 
     fun onSignInButtonClicked() {
         _signInNavigationLiveData.value = true

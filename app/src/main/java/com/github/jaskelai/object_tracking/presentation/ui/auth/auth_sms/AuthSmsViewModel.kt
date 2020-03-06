@@ -16,9 +16,9 @@ class AuthSmsViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
-    val backNavigationLiveData = SingleEventLiveData<Boolean>()
-    val toSetBioNavigationLiveData = SingleEventLiveData<Boolean>()
-    val isVerifyButtonEnabledLiveData = MutableLiveData<Boolean>()
+    val backNavigationLiveData = SingleEventLiveData<Boolean>(false)
+    val toSetBioNavigationLiveData = SingleEventLiveData<Boolean>(false)
+    val isVerifyButtonEnabledLiveData = MutableLiveData<Boolean>(false)
 
     var code: String = ""
         set(value) {
@@ -28,12 +28,6 @@ class AuthSmsViewModel @Inject constructor(
 
     companion object {
         private const val CODE_LENGTH = 6
-    }
-
-    init {
-        backNavigationLiveData.value = false
-        toSetBioNavigationLiveData.value = false
-        isVerifyButtonEnabledLiveData.value = false
     }
 
     fun onBackButtonClicked() {

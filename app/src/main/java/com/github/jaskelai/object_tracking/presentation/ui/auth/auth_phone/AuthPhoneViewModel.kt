@@ -20,10 +20,10 @@ class AuthPhoneViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
-    val backNavigationLiveData = SingleEventLiveData<Boolean>()
-    val toSmsCodeNavigationLiveData = SingleEventLiveData<Boolean>()
-    val onSendSmsButtonClickedLiveData = MutableLiveData<Boolean>()
-    val isSendSmsButtonEnabledLiveData = MutableLiveData<Boolean>()
+    val backNavigationLiveData = SingleEventLiveData(false)
+    val toSmsCodeNavigationLiveData = SingleEventLiveData<Boolean>(false)
+    val onSendSmsButtonClickedLiveData = MutableLiveData<Boolean>(false)
+    val isSendSmsButtonEnabledLiveData = MutableLiveData<Boolean>(false)
 
     var phoneNumber: String = PHONE_NUMBER_PLACEHOLDER
         set(value) {
@@ -35,13 +35,6 @@ class AuthPhoneViewModel @Inject constructor(
     companion object {
         private const val PHONE_NUMBER_PLACEHOLDER = "+7"
         private const val PHONE_NUMBER_LENGTH = 11
-    }
-
-    init {
-        backNavigationLiveData.value = false
-        isSendSmsButtonEnabledLiveData.value = false
-        onSendSmsButtonClickedLiveData.value = false
-        toSmsCodeNavigationLiveData.value = false
     }
 
     private fun onPhoneNumberTyped(phoneNumber: String) {
