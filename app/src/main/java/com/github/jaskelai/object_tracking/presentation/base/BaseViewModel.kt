@@ -12,7 +12,7 @@ import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
 
-    val errorMessageLiveData = MutableLiveData<Int>()
+    val errorMessageLiveData = MutableLiveData<String>()
     val progressLiveData = MutableLiveData<Boolean>()
 
     private val superVisorJob = SupervisorJob()

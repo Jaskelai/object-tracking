@@ -35,5 +35,20 @@
         android:id="@+id/authSmsFragment"
         android:name="com.github.jaskelai.object_tracking.presentation.ui.auth.auth_sms.AuthSmsFragment"
         android:label="AuthSmsFragment"
-        tools:layout="@layout/fragment_auth_sms" />
+        tools:layout="@layout/fragment_auth_sms">
+        <action
+            android:id="@+id/action_authSmsFragment_to_setBioFragment"
+            app:destination="@id/setBioFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@layout/fragment_auth_phone"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/setBioFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.set_bio.SetBioFragment"
+        android:label="SetBioFragment"
+        tools:layout="@layout/fragment_set_bio" />
 </navigation>

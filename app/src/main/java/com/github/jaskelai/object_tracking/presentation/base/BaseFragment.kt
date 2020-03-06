@@ -62,7 +62,7 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
 
     private fun observeError() {
         viewModel.errorMessageLiveData.observe(viewLifecycleOwner) {
-            showErrorDialog(requireContext().getString(it))
+            showErrorDialog(it)
         }
     }
 

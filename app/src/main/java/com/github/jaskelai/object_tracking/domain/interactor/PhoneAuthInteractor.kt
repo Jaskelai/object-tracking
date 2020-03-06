@@ -1,38 +1,39 @@
 package com.github.jaskelai.object_tracking.domain.interactor
 
-import com.github.jaskelai.object_tracking.domain.interfaces.PhoneAuthRepository
+import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthError
+import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
+import com.github.jaskelai.object_tracking.domain.interfaces.AuthRepository
+import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.google.firebase.auth.PhoneAuthCredential
 import com.google.firebase.auth.PhoneAuthProvider
 import javax.inject.Inject
 
 class PhoneAuthInteractor @Inject constructor(
-    private val phoneAuthRepository: PhoneAuthRepository
+    private val authRepository: AuthRepository
 ) {
 
     fun setVerificationId(verificationId: String) {
-        phoneAuthRepository.verificationId = verificationId
+        authRepository.verificationId = verificationId
     }
 
     fun setCode(code: String) {
-        phoneAuthRepository.code = code
+        authRepository.code = code
         setCredential()
     }
 
     fun setCredentialViaObject(credential: PhoneAuthCredential) {
-        phoneAuthRepository.phoneAuthCredential = credential
+        authRepository.phoneAuthCredential = credential
     }
 
-    suspend fun signIn() {
-        phoneAuthRepository.signIn()
-    }
+    suspend fun signIn(): Result<UserAuthSuccess, UserAuthError> = authRepository.signIn()
 
     private fun setCredential() {
-        val code = phoneAuthRepository.code
-        val verificationId = phoneAuthRepository.verificationId
+        val code = authRepository.code
+        val verificationId = authRepository.verificationId
 
         if (code != null && verificationId != null) {
             val credential = PhoneAuthProvider.getCredential(verificationId, code)
-            phoneAuthRepository.phoneAuthCredential = credential
+            authRepository.phoneAuthCredential = credential
         }
     }
 }

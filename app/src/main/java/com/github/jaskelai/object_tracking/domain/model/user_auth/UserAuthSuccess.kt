@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.data.model.user_auth
+package com.github.jaskelai.object_tracking.domain.model.user_auth
 
 data class UserAuthSuccess(
 

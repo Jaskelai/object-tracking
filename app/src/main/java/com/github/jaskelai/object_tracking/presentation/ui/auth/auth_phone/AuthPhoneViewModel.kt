@@ -7,6 +7,7 @@ import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
 import com.github.jaskelai.object_tracking.presentation.utils.ext.onlyDigits
+import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
 import javax.inject.Inject
@@ -15,7 +16,8 @@ const val TIMEOUT_DURATION_SECONDS = 15L
 
 class AuthPhoneViewModel @Inject constructor(
     private val firebaseErrorMapper: FirebaseErrorMapper,
-    private val phoneAuthInteractor: PhoneAuthInteractor
+    private val phoneAuthInteractor: PhoneAuthInteractor,
+    private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
     val backNavigationLiveData = SingleEventLiveData<Boolean>()
@@ -65,12 +67,13 @@ class AuthPhoneViewModel @Inject constructor(
     }
 
     fun onVerificationFailed(ex: FirebaseException) {
-        errorMessageLiveData.value = firebaseErrorMapper.mapExceptionToResourceId(ex)
+        errorMessageLiveData.value =
+            resourceProvider.getString(firebaseErrorMapper.mapExceptionToResourceId(ex))
         invalidateAfterRequest()
     }
 
     fun onVerificationTimeout(verificationId: String) {
-        errorMessageLiveData.value = R.string.error_timeout
+        errorMessageLiveData.value = resourceProvider.getString(R.string.error_timeout)
         phoneAuthInteractor.setVerificationId(verificationId)
         invalidateAfterRequest()
     }

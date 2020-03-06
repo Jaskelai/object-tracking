@@ -1,6 +1,6 @@
 package com.github.jaskelai.object_tracking.data.mapper
 
-import com.github.jaskelai.object_tracking.data.model.user_auth.UserAuthSuccess
+import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
 import com.google.firebase.auth.FirebaseUser
 import javax.inject.Inject
 

@@ -32,5 +32,8 @@ class AuthSmsFragment : BaseFragment<FragmentAuthSmsBinding, AuthSmsViewModel>()
         viewModel.backNavigationLiveData.observe(this) {
             if (it) back()
         }
+        viewModel.toSetBioNavigationLiveData.observe(this) {
+            if (it) navigateTo(R.id.action_authSmsFragment_to_setBioFragment)
+        }
     }
 }
