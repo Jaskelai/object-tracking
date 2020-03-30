@@ -1,7 +1,7 @@
-package com.github.jaskelai.object_tracking.presentation.ui.set_bio.di
+package com.github.jaskelai.object_tracking.presentation.ui.auth.set_bio.di
 
 import androidx.lifecycle.ViewModel
-import com.github.jaskelai.object_tracking.presentation.ui.set_bio.SetBioViewModel
+import com.github.jaskelai.object_tracking.presentation.ui.auth.set_bio.SetBioViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelKey
 import dagger.Binds
 import dagger.Module

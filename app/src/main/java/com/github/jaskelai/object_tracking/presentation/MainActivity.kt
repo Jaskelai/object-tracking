@@ -4,8 +4,10 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.findNavController
 import com.github.jaskelai.object_tracking.R
+import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
 import com.github.jaskelai.object_tracking.presentation.di.MainSubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
 import com.github.jaskelai.object_tracking.presentation.utils.ext.getAppComponent
@@ -34,8 +36,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun observeNavigation() {
         mainViewModel.isAuthed.observe(this) {
             when (it) {
-                true -> findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_authed)
-                false -> findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_auth)
+                AuthState.FULL_AUTHED -> findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_authed)
+                AuthState.NOT_AUTHED -> findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_auth)
+                AuthState.AUTHED_WITH_SMS -> {
+                    findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_auth)
+                    findNavController(R.id.nav_host_fragment).navigate(R.id.setBioFragment,)
+                }
             }
         }
     }

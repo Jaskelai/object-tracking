@@ -6,6 +6,7 @@ import com.github.jaskelai.object_tracking.data.mapper.FirebaseErrorMapper
 import com.github.jaskelai.object_tracking.data.mapper.FirebaseUserAuthMapper
 import com.github.jaskelai.object_tracking.domain.interfaces.AuthRepository
 import com.github.jaskelai.object_tracking.domain.model.common.Result
+import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
 import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthError
 import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
 import com.google.firebase.FirebaseException
@@ -28,7 +29,7 @@ class AuthRepositoryImpl @Inject constructor(
     override var phoneAuthCredential: PhoneAuthCredential? = null
 
     companion object {
-        private const val KEY_IS_AUTHED = "is_authed"
+        private const val KEY_AUTH_STATE = "auth_state"
     }
 
     override suspend fun signIn(): Result<UserAuthSuccess, UserAuthError> =
@@ -39,7 +40,10 @@ class AuthRepositoryImpl @Inject constructor(
                     .addOnSuccessListener { authResult ->
                         val isNewUser = authResult.additionalUserInfo?.isNewUser ?: false
 
-                        sharedPrefsProvider.writeBoolean(KEY_IS_AUTHED, true)
+                        sharedPrefsProvider.writeString(
+                            KEY_AUTH_STATE,
+                            AuthState.AUTHED_WITH_SMS.name
+                        )
 
                         cont.resume(
                             Result.Success(
@@ -78,5 +82,7 @@ class AuthRepositoryImpl @Inject constructor(
             } ?: cont.resume(Result.Error(UserAuthError(messageId = R.string.error_common)))
         }
 
-    override fun isAuthed(): Boolean = sharedPrefsProvider.readBoolean(KEY_IS_AUTHED)
+    override fun getAuthState(): AuthState = AuthState.valueOf(
+        sharedPrefsProvider.readString(KEY_AUTH_STATE) ?: AuthState.NOT_AUTHED.name
+    )
 }

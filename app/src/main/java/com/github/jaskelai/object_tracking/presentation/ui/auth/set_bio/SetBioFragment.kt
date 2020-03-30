@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.presentation.ui.set_bio
+package com.github.jaskelai.object_tracking.presentation.ui.auth.set_bio
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels

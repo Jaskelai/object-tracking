@@ -3,6 +3,7 @@ package com.github.jaskelai.object_tracking.domain.interfaces
 import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthError
 import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
 import com.github.jaskelai.object_tracking.domain.model.common.Result
+import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
 import com.google.firebase.auth.PhoneAuthCredential
 
 interface AuthRepository {
@@ -13,5 +14,5 @@ interface AuthRepository {
 
     suspend fun signIn(): Result<UserAuthSuccess, UserAuthError>
 
-    fun isAuthed(): Boolean
+    fun getAuthState(): AuthState
 }

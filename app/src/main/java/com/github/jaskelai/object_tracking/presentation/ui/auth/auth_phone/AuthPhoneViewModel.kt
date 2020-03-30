@@ -20,10 +20,15 @@ class AuthPhoneViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
+    companion object {
+        private const val PHONE_NUMBER_PLACEHOLDER = "+7"
+        private const val PHONE_NUMBER_LENGTH = 11
+    }
+
     val backNavigationLiveData = SingleEventLiveData(false)
-    val toSmsCodeNavigationLiveData = SingleEventLiveData<Boolean>(false)
-    val onSendSmsButtonClickedLiveData = MutableLiveData<Boolean>(false)
-    val isSendSmsButtonEnabledLiveData = MutableLiveData<Boolean>(false)
+    val toSmsCodeNavigationLiveData = SingleEventLiveData(false)
+    val onSendSmsButtonClickedLiveData = MutableLiveData(false)
+    val isSendSmsButtonEnabledLiveData = MutableLiveData(false)
 
     var phoneNumber: String = PHONE_NUMBER_PLACEHOLDER
         set(value) {
@@ -31,11 +36,6 @@ class AuthPhoneViewModel @Inject constructor(
             onPhoneNumberTyped(field)
 
         }
-
-    companion object {
-        private const val PHONE_NUMBER_PLACEHOLDER = "+7"
-        private const val PHONE_NUMBER_LENGTH = 11
-    }
 
     private fun onPhoneNumberTyped(phoneNumber: String) {
         val actualPhoneNumber = phoneNumber.onlyDigits
@@ -54,9 +54,14 @@ class AuthPhoneViewModel @Inject constructor(
     }
 
     fun onVerificationComplete(credential: PhoneAuthCredential) {
-        phoneAuthInteractor.setCredentialViaObject(credential)
-        invalidateAfterRequest()
-        toSmsCodeNavigationLiveData.value = true
+        when (credential.smsCode) {
+            null -> { }
+            else -> {
+                phoneAuthInteractor.setCredentialViaObject(credential)
+                invalidateAfterRequest()
+                toSmsCodeNavigationLiveData.value = true
+            }
+        }
     }
 
     fun onVerificationFailed(ex: FirebaseException) {
