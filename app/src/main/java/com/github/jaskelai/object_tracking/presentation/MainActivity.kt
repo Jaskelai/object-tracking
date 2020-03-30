@@ -38,10 +38,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             when (it) {
                 AuthState.FULL_AUTHED -> findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_authed)
                 AuthState.NOT_AUTHED -> findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_auth)
-                AuthState.AUTHED_WITH_SMS -> {
-                    findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_auth)
-                    findNavController(R.id.nav_host_fragment).navigate(R.id.setBioFragment,)
-                }
+//                AuthState.AUTHED_WITH_SMS -> {
+//                    findNavController(R.id.nav_host_fragment).setGraph(R.navigation.nav_graph_auth)
+//                }
             }
         }
     }
