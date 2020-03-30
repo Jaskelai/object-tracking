@@ -37,9 +37,8 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding, AuthPhoneViewMo
     }
 
     override fun observeNavigation() {
-        viewModel.backNavigationLiveData.observe(this) {
-            if (it) back()
-        }
+        super.observeNavigation()
+
         viewModel.toSmsCodeNavigationLiveData.observe(this) {
             if (it) navigateTo(R.id.action_authPhoneFragment_to_authSmsFragment)
         }

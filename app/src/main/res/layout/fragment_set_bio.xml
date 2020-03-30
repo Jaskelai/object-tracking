@@ -14,17 +14,13 @@
         android:background="@drawable/gradient_auth"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="@dimen/btn_back_sign_in"
-            android:layout_height="@dimen/btn_back_sign_in"
+        <include
+            layout="@layout/view_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
-            android:alpha="0.8"
-            android:background="?selectableItemBackgroundBorderless"
-            android:contentDescription="@string/back"
-            android:onClick="@{() -> viewModel.onBackButtonClicked()}"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white" />
+            app:vm="@{viewModel}" />
 
         <TextView
             style="@style/TitleAuth"
@@ -39,8 +35,8 @@
             style="@style/EditTextLayoutWhite"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
             android:hint="@string/phone_number_auth_phone">
 

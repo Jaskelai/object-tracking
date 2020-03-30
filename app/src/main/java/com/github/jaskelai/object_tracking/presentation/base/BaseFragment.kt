@@ -58,7 +58,12 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
 
     protected open fun init() {}
 
-    protected open fun observeNavigation() {}
+    @CallSuper
+    protected open fun observeNavigation() {
+        viewModel.backNavigationLiveData.observe(this) {
+            if (it) back()
+        }
+    }
 
     private fun observeError() {
         viewModel.errorMessageLiveData.observe(viewLifecycleOwner) {

@@ -28,6 +28,6 @@ class SetBioFragment : BaseFragment<FragmentSetBioBinding, SetBioViewModel>() {
     }
 
     override fun observeNavigation() {
-
+        super.observeNavigation()
     }
 }

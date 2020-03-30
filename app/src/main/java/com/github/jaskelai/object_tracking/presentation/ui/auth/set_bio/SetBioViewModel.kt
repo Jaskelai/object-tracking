@@ -10,7 +10,4 @@ class SetBioViewModel @Inject constructor(
 
 ): BaseViewModel() {
 
-    fun onBackButtonClicked() {
-
-    }
 }

@@ -4,6 +4,7 @@ import androidx.annotation.CallSuper
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,6 +15,7 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
 
     val errorMessageLiveData = MutableLiveData<String>()
     val progressLiveData = MutableLiveData<Boolean>()
+    val backNavigationLiveData = SingleEventLiveData(false)
 
     private val superVisorJob = SupervisorJob()
 
@@ -27,6 +29,10 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
 
     init {
         progressLiveData.value = false
+    }
+
+    open fun onBackButtonClicked() {
+        backNavigationLiveData.value = true
     }
 
     @CallSuper

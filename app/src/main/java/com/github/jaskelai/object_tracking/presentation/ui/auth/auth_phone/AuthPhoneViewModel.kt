@@ -25,7 +25,6 @@ class AuthPhoneViewModel @Inject constructor(
         private const val PHONE_NUMBER_LENGTH = 11
     }
 
-    val backNavigationLiveData = SingleEventLiveData(false)
     val toSmsCodeNavigationLiveData = SingleEventLiveData(false)
     val onSendSmsButtonClickedLiveData = MutableLiveData(false)
     val isSendSmsButtonEnabledLiveData = MutableLiveData(false)
@@ -41,10 +40,6 @@ class AuthPhoneViewModel @Inject constructor(
         val actualPhoneNumber = phoneNumber.onlyDigits
         isSendSmsButtonEnabledLiveData.value =
             (actualPhoneNumber.length == PHONE_NUMBER_LENGTH && progressLiveData.value == false)
-    }
-
-    fun onBackButtonClicked() {
-        backNavigationLiveData.value = true
     }
 
     fun onSignInButtonClicked() {

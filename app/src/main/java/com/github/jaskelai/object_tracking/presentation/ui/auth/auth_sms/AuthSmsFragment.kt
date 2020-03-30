@@ -29,9 +29,8 @@ class AuthSmsFragment : BaseFragment<FragmentAuthSmsBinding, AuthSmsViewModel>()
     }
 
     override fun observeNavigation() {
-        viewModel.backNavigationLiveData.observe(this) {
-            if (it) back()
-        }
+        super.observeNavigation()
+
         viewModel.toSetBioNavigationLiveData.observe(this) {
             if (it) navigateTo(R.id.action_authSmsFragment_to_setBioFragment)
         }

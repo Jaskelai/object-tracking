@@ -16,7 +16,6 @@ class AuthSmsViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
-    val backNavigationLiveData = SingleEventLiveData<Boolean>(false)
     val toSetBioNavigationLiveData = SingleEventLiveData<Boolean>(false)
     val isVerifyButtonEnabledLiveData = MutableLiveData<Boolean>(false)
 
@@ -28,10 +27,6 @@ class AuthSmsViewModel @Inject constructor(
 
     companion object {
         private const val CODE_LENGTH = 6
-    }
-
-    fun onBackButtonClicked() {
-        backNavigationLiveData.value = true
     }
 
     fun onVerifyBtnClicked() {
