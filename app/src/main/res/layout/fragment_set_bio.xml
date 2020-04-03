@@ -38,7 +38,7 @@
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
             android:layout_marginTop="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
-            android:hint="@string/phone_number_auth_phone">
+            android:hint="@string/name_set_bio">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/EditTextWhiteSignIn"
@@ -48,6 +48,37 @@
                 android:text="@={viewModel.setBioFieldMediator.name}" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/EditTextLayoutWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
+            android:hint="@string/surname_set_bio">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/EditTextWhiteSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:text="@={viewModel.setBioFieldMediator.surname}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/BtnWhiteBorder"
+            android:layout_width="@dimen/btn_width_auth"
+            android:layout_height="@dimen/btn_height_auth"
+            android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
+            android:enabled="@{viewModel.isVerifyButtonEnabledLiveData()}"
+            android:onClick="@{() -> viewModel.onVerifyBtnClicked()}"
+            android:text="@string/verify_btn_auth_sms"
+            android:textColor="@color/selector_white_btn_background"
+            app:strokeColor="@color/selector_white_btn_background" />
 
     </LinearLayout>
 </layout>

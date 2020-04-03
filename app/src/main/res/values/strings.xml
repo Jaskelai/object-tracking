@@ -29,5 +29,6 @@
     <!--set bio-->
     <string name="title_set_bio">Введите ваши данные</string>
     <string name="name_set_bio">Имя</string>
+    <string name="surname_set_bio">Фамилия</string>
 
 </resources>
