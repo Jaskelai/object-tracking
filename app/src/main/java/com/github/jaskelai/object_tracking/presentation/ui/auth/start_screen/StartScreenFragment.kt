@@ -1,8 +1,7 @@
-package com.github.jaskelai.object_tracking.presentation.ui.start_screen
+package com.github.jaskelai.object_tracking.presentation.ui.auth.start_screen
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.FragmentStartScreenBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
@@ -26,11 +25,5 @@ class StartScreenFragment : BaseFragment<FragmentStartScreenBinding, StartScreen
             .inject(this)
 
         super.onCreate(savedInstanceState)
-    }
-
-    override fun observeNavigation() {
-        viewModel.signInNavigationLiveData.observe(this) {
-            if (it) navigateTo(R.id.action_startScreenFragment_to_authPhoneFragment)
-        }
     }
 }

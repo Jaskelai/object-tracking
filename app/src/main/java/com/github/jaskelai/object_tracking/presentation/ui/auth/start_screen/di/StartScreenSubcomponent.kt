@@ -1,7 +1,7 @@
-package com.github.jaskelai.object_tracking.presentation.ui.start_screen.di
+package com.github.jaskelai.object_tracking.presentation.ui.auth.start_screen.di
 
 import com.github.jaskelai.object_tracking.di.scope.PerFragment
-import com.github.jaskelai.object_tracking.presentation.ui.start_screen.StartScreenFragment
+import com.github.jaskelai.object_tracking.presentation.ui.auth.start_screen.StartScreenFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [StartScreenModule::class])

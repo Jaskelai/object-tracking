@@ -1,5 +1,6 @@
 package com.github.jaskelai.object_tracking.presentation
 
+import androidx.lifecycle.LiveData
 import com.github.jaskelai.object_tracking.domain.interactor.AuthStateInteractor
 import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
@@ -10,13 +11,14 @@ class MainViewModel @Inject constructor(
     private val authStateInteractor: AuthStateInteractor
 ) : BaseViewModel() {
 
-    val isAuthed = SingleEventLiveData<AuthState>()
+    private val _isAuthed = SingleEventLiveData<AuthState>()
+    val isAuthed: LiveData<AuthState> =  _isAuthed
 
     init {
         dealWithAuthState()
     }
 
     private fun dealWithAuthState() {
-        isAuthed.value = authStateInteractor.getAuthState()
+        _isAuthed.value = authStateInteractor.getAuthState()
     }
 }

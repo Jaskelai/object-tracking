@@ -74,8 +74,6 @@
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
-            android:enabled="@{viewModel.isVerifyButtonEnabledLiveData()}"
-            android:onClick="@{() -> viewModel.onVerifyBtnClicked()}"
             android:text="@string/verify_btn_auth_sms"
             android:textColor="@color/selector_white_btn_background"
             app:strokeColor="@color/selector_white_btn_background" />

@@ -6,7 +6,6 @@ import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthError
 import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
-import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -16,7 +15,6 @@ class AuthSmsViewModel @Inject constructor(
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
 
-    val toSetBioNavigationLiveData = SingleEventLiveData<Boolean>(false)
     val isVerifyButtonEnabledLiveData = MutableLiveData<Boolean>(false)
 
     var code: String = ""
@@ -55,7 +53,7 @@ class AuthSmsViewModel @Inject constructor(
     private fun handleResult(result: Result<UserAuthSuccess, UserAuthError>) {
         when (result) {
             is Result.Success -> {
-                toSetBioNavigationLiveData.value = true
+                navigate(AuthSmsFragmentDirections.actionAuthSmsFragmentToSetBioFragment())
             }
             is Result.Error -> {
                 if (result.data?.message != null) {

@@ -5,7 +5,6 @@ import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.data.mapper.FirebaseErrorMapper
 import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
-import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
 import com.github.jaskelai.object_tracking.presentation.utils.ext.onlyDigits
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import com.google.firebase.FirebaseException
@@ -25,7 +24,6 @@ class AuthPhoneViewModel @Inject constructor(
         private const val PHONE_NUMBER_LENGTH = 11
     }
 
-    val toSmsCodeNavigationLiveData = SingleEventLiveData(false)
     val onSendSmsButtonClickedLiveData = MutableLiveData(false)
     val isSendSmsButtonEnabledLiveData = MutableLiveData(false)
 
@@ -54,7 +52,8 @@ class AuthPhoneViewModel @Inject constructor(
             else -> {
                 phoneAuthInteractor.setCredentialViaObject(credential)
                 invalidateAfterRequest()
-                toSmsCodeNavigationLiveData.value = true
+
+                navigate(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToAuthSmsFragment())
             }
         }
     }

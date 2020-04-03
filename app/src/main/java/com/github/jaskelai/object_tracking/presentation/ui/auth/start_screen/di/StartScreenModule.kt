@@ -1,7 +1,7 @@
-package com.github.jaskelai.object_tracking.presentation.ui.start_screen.di
+package com.github.jaskelai.object_tracking.presentation.ui.auth.start_screen.di
 
 import androidx.lifecycle.ViewModel
-import com.github.jaskelai.object_tracking.presentation.ui.start_screen.StartScreenViewModel
+import com.github.jaskelai.object_tracking.presentation.ui.auth.start_screen.StartScreenViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelKey
 import dagger.Binds
 import dagger.Module
