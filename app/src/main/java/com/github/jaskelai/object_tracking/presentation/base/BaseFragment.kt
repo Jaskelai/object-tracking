@@ -66,7 +66,6 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
             when (command) {
                 is NavigationCommand.To -> findNavController().navigate(command.directions, getExtras())
                 is NavigationCommand.Back -> findNavController().navigateUp()
-                else -> { }
             }
         }
     }

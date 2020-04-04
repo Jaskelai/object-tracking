@@ -12,6 +12,8 @@ import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
 import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -47,17 +49,24 @@ class AuthRepositoryImpl @Inject constructor(
         sharedPrefsProvider.readString(KEY_AUTH_STATE) ?: AuthState.NOT_AUTHED.name
     )
 
-    override suspend fun setBio(userBio: UserBio): Result<Unit, ErrorModel> =
+    override suspend fun setBio(userBio: UserBio): Result<Unit, ErrorModel> = withContext(Dispatchers.IO) {
         auth.currentUser?.uid?.let {
             val result = networkUserDataSource.setBio(userBio, it)
 
             when (result) {
-                is Result.Success -> dbUserDataSource.saveUser(UserDB(
-                    id = it,
-                    name = userBio.name,
-                    surname = userBio.surname
-                ))
+                is Result.Success -> {
+                    dbUserDataSource.saveUser(UserDB(
+                        id = it,
+                        name = userBio.name,
+                        surname = userBio.surname
+                    ))
+                    sharedPrefsProvider.writeString(
+                        key = KEY_AUTH_STATE,
+                        value = AuthState.FULL_AUTHED.name
+                    )
+                }
             }
             result
         } ?: Result.Error(ErrorModel(messageId = R.string.error_common))
+    }
 }

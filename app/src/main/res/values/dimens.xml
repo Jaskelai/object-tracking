@@ -49,4 +49,7 @@
     <dimen name="et_margin_start_end_sign_in">68dp</dimen>
     <dimen name="btn_back_sign_in">24dp</dimen>
 
+    <!--dimens for main flow-->
+    <dimen name="bottom_nav_indicator_height_main_flow">2dp</dimen>
+
 </resources>

@@ -8,5 +8,7 @@ class DBUserDataSourceImpl @Inject constructor(
     private val userDao: UserDao
 ): DBUserDataSource {
 
-    override suspend fun saveUser(userDB: UserDB) = userDao.saveUser(userDB)
+    override suspend fun saveUser(userDB: UserDB) {
+        userDao.saveUser(userDB)
+    }
 }

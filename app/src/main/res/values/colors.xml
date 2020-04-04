@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- app color kit -->
     <color name="color_primary_blue">#401CE9</color>
     <color name="color_primary_violet">#872CC6</color>
+    <color name="color_inactive">#D1D3D4</color>
 
     <!-- status bar auth -->
     <color name="color_status_bar">#27108B</color>

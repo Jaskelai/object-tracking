@@ -5,6 +5,6 @@ import com.google.firebase.database.IgnoreExtraProperties
 @IgnoreExtraProperties
 data class UserInfoNet (
 
-    val name: String,
-    val surname: String
+    var name: String = "",
+    var surname: String = ""
 )

@@ -33,13 +33,13 @@
             android:layout_marginEnd="@dimen/margin_medium"
             android:gravity="center"
             android:text="@string/type_code_text_auth_sms"
-            app:layout_constraintBottom_toTopOf="@id/codeAuthSms"
+            app:layout_constraintBottom_toTopOf="@id/code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.jkb.vcedittext.VerificationCodeEditText
-            android:id="@+id/codeAuthSms"
+            android:id="@+id/code"
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -51,7 +51,7 @@
             app:bottomLineSelectedColor="@android:color/white"
             app:figures="6"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/btnVerifyAuthSms"
+            app:layout_constraintBottom_toTopOf="@id/btnVerify"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -59,7 +59,7 @@
             app:selectedBackgroundColor="@android:color/transparent" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnVerifyAuthSms"
+            android:id="@+id/btnVerify"
             style="@style/BtnWhiteBorder"
             android:layout_width="@dimen/btn_width_auth"
             android:layout_height="@dimen/btn_height_auth"
@@ -71,11 +71,11 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/codeAuthSms"
+            app:layout_constraintTop_toBottomOf="@id/code"
             app:strokeColor="@color/selector_white_btn_background" />
 
         <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/progressBarSmsAuthPhone"
+            android:id="@+id/progressBarSmsAuthSms"
             android:layout_width="@dimen/progress_bar_auth_width"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
@@ -84,7 +84,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnVerifyAuthSms"
+            app:layout_constraintTop_toBottomOf="@id/btnVerify"
             app:lottie_autoPlay="true"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/lottie_progress_dots" />
