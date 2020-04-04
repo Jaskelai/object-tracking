@@ -71,10 +71,12 @@
             style="@style/BtnWhiteBorder"
             android:layout_width="@dimen/btn_width_auth"
             android:layout_height="@dimen/btn_height_auth"
+            android:layout_gravity="center_horizontal"
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
             android:layout_marginTop="@dimen/margin_large"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
-            android:text="@string/verify_btn_auth_sms"
+            android:onClick="@{() -> viewModel.onRegisterClicked()}"
+            android:text="@string/register_btn_set_bio"
             android:textColor="@color/selector_white_btn_background"
             app:strokeColor="@color/selector_white_btn_background" />
 

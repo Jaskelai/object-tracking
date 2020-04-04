@@ -1,8 +1,8 @@
-package com.github.jaskelai.object_tracking.domain.model.user_auth
+package com.github.jaskelai.object_tracking.domain.model.common
 
 import androidx.annotation.StringRes
 
-data class UserAuthError(
+data class ErrorModel(
 
     @StringRes val messageId: Int? = null,
 

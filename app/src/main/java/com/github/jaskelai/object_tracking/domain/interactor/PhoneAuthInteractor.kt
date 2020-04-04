@@ -1,7 +1,6 @@
 package com.github.jaskelai.object_tracking.domain.interactor
 
-import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthError
-import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
+import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.github.jaskelai.object_tracking.domain.interfaces.AuthRepository
 import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.google.firebase.auth.PhoneAuthCredential
@@ -25,7 +24,7 @@ class PhoneAuthInteractor @Inject constructor(
         authRepository.phoneAuthCredential = credential
     }
 
-    suspend fun signIn(): Result<UserAuthSuccess, UserAuthError> = authRepository.signIn()
+    suspend fun signIn(): Result<Unit, ErrorModel> = authRepository.signIn()
 
     private fun setCredential() {
         val code = authRepository.code

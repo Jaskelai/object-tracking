@@ -7,9 +7,9 @@ import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.FirebaseTooManyRequestsException
 import javax.inject.Inject
 
-class FirebaseErrorMapper @Inject constructor() {
+class FirebaseAuthErrorMapper @Inject constructor() {
 
-    fun mapExceptionToResourceId(exception: FirebaseException): Int {
+    fun execute(exception: FirebaseException): Int {
         return when (exception) {
             is FirebaseNetworkException -> R.string.error_network
             is FirebaseTooManyRequestsException -> R.string.error_too_many_requests

@@ -2,7 +2,7 @@ package com.github.jaskelai.object_tracking.presentation.ui.auth.auth_phone
 
 import androidx.lifecycle.MutableLiveData
 import com.github.jaskelai.object_tracking.R
-import com.github.jaskelai.object_tracking.data.mapper.FirebaseErrorMapper
+import com.github.jaskelai.object_tracking.data.mapper.FirebaseAuthErrorMapper
 import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.ext.onlyDigits
@@ -14,7 +14,7 @@ import javax.inject.Inject
 const val TIMEOUT_DURATION_SECONDS = 15L
 
 class AuthPhoneViewModel @Inject constructor(
-    private val firebaseErrorMapper: FirebaseErrorMapper,
+    private val firebaseAuthErrorMapper: FirebaseAuthErrorMapper,
     private val phoneAuthInteractor: PhoneAuthInteractor,
     private val resourceProvider: ResourceProvider
 ) : BaseViewModel() {
@@ -59,8 +59,7 @@ class AuthPhoneViewModel @Inject constructor(
     }
 
     fun onVerificationFailed(ex: FirebaseException) {
-        errorMessageLiveData.value =
-            resourceProvider.getString(firebaseErrorMapper.mapExceptionToResourceId(ex))
+        errorMessageLiveData.value = resourceProvider.getString(firebaseAuthErrorMapper.execute(ex))
         invalidateAfterRequest()
     }
 

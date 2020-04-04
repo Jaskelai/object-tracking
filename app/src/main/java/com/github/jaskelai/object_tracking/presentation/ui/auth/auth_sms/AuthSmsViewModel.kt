@@ -3,8 +3,7 @@ package com.github.jaskelai.object_tracking.presentation.ui.auth.auth_sms
 import androidx.lifecycle.MutableLiveData
 import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.Result
-import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthError
-import com.github.jaskelai.object_tracking.domain.model.user_auth.UserAuthSuccess
+import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import kotlinx.coroutines.launch
@@ -50,7 +49,7 @@ class AuthSmsViewModel @Inject constructor(
         }
     }
 
-    private fun handleResult(result: Result<UserAuthSuccess, UserAuthError>) {
+    private fun handleResult(result: Result<Unit, ErrorModel>) {
         when (result) {
             is Result.Success -> {
                 navigate(AuthSmsFragmentDirections.actionAuthSmsFragmentToSetBioFragment())
