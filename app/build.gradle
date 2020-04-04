@@ -20,6 +20,12 @@ android {
         versionCode versionCodeProject
         versionName versionNameProject
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        kapt {
+            arguments {
+                arg("room.schemaLocation", "$projectDir/schemas")
+            }
+        }
     }
 
     buildTypes {
@@ -135,7 +141,7 @@ dependencies {
     //room
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
-    implementation "androidx.room:room-rxjava2:$roomVersion"
+    implementation "androidx.room:room-ktx:$roomVersion"
 
     //navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
@@ -160,6 +166,7 @@ dependencies {
 
     //firebase
     implementation "com.google.firebase:firebase-auth:$firebaseVersion"
+    implementation "com.google.firebase:firebase-database-ktx:$firebaseVersion"
 
     // glide
     implementation "com.github.bumptech.glide:glide:$glideVersion"

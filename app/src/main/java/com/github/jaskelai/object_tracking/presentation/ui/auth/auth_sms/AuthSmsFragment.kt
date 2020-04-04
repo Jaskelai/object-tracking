@@ -2,7 +2,6 @@ package com.github.jaskelai.object_tracking.presentation.ui.auth.auth_sms
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.observe
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.FragmentAuthSmsBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
@@ -26,11 +25,5 @@ class AuthSmsFragment : BaseFragment<FragmentAuthSmsBinding, AuthSmsViewModel>()
             .inject(this)
 
         super.onCreate(savedInstanceState)
-    }
-
-    override fun observeNavigation() {
-        viewModel.backNavigationLiveData.observe(this) {
-            if (it) back()
-        }
     }
 }

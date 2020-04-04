@@ -14,19 +14,15 @@
         android:layout_height="match_parent"
         android:background="@drawable/gradient_auth">
 
-        <ImageView
-            android:layout_width="@dimen/btn_back_sign_in"
-            android:layout_height="@dimen/btn_back_sign_in"
+        <include
+            layout="@layout/view_back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
-            android:alpha="0.8"
-            android:background="?selectableItemBackgroundBorderless"
-            android:contentDescription="@string/back"
-            android:onClick="@{() -> viewModel.onBackButtonClicked()}"
-            android:src="@drawable/ic_arrow_back"
-            android:tint="@android:color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:vm="@{viewModel}" />
 
         <TextView
             android:id="@+id/tv"
@@ -47,9 +43,9 @@
             android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:inputType="number"
+            android:text="@={viewModel.code}"
             android:textColor="@android:color/white"
             android:textSize="@dimen/text_24"
-            android:text="@={viewModel.code}"
             app:bottomLineHeight="2dp"
             app:bottomLineNormalColor="@color/color_808080"
             app:bottomLineSelectedColor="@android:color/white"

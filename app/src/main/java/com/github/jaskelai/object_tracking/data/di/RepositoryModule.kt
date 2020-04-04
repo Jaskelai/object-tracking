@@ -1,8 +1,8 @@
 package com.github.jaskelai.object_tracking.data.di
 
-import com.github.jaskelai.object_tracking.data.repository.PhoneAuthRepositoryImpl
+import com.github.jaskelai.object_tracking.data.repository.user.AuthRepositoryImpl
 import com.github.jaskelai.object_tracking.di.scope.PerApp
-import com.github.jaskelai.object_tracking.domain.interfaces.PhoneAuthRepository
+import com.github.jaskelai.object_tracking.domain.interfaces.AuthRepository
 import dagger.Binds
 import dagger.Module
 
@@ -11,5 +11,5 @@ interface RepositoryModule {
 
     @Binds
     @PerApp
-    fun bind1(impl: PhoneAuthRepositoryImpl): PhoneAuthRepository
+    fun bind1(impl: AuthRepositoryImpl): AuthRepository
 }

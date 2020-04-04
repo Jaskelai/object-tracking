@@ -1,21 +1,47 @@
 <resources>
     <string name="app_name">Object Tracking</string>
 
+    <!--common-->
     <string name="close_error_alert_dialog">Ок</string>
 
-    <string name="sign_in_start_screen">Вход</string>
-
-    <string name="phone_number_auth_phone">Номер телефона</string>
-    <string name="password_auth_phone">Пароль</string>
-    <string name="type_phone_text_auth_phone">Введите номер телефона</string>
-    <string name="send_sms_btn_auth_phone">Отправить СМС</string>
-    <string name="back">Вернуться назад</string>
+    <!--errors-->
     <string name="error_network">Ошибка соединения</string>
     <string name="error_too_many_requests">Слишком много запросов</string>
     <string name="error_server_not_available">Сервер не доступен</string>
     <string name="error_common">Ошибка</string>
     <string name="error_timeout">Время ожидания истекло</string>
     <string name="error_canceled">Запрос отменен</string>
+
+    <!--database errors-->
+    <string name="error_db_network_1_datastale">Повторите попытку</string>
+    <string name="error_db_network_2_failure">Ошибка записи на сервер</string>
+    <string name="error_db_network_3_permission_denied">Доступ запрещен</string>
+    <string name="error_db_network_4_aborted_due_to_network">Операция отменена из-за разрыва соединения</string>
+    <string name="error_db_network_6_token_expired">Истекла сессия пользователя. Войдите в свой аккаунт еще раз</string>
+    <string name="error_db_network_7_token_invalid">Неверный пользователь. Войдите в свой аккаунт еще раз</string>
+    <string name="error_db_network_8_too_many_requests">Слишком много запросов. Повторите свою попытку позже</string>
+    <string name="error_db_network_9_transaction_overriden">Запрос был отменен из-за более нового запроса</string>
+    <string name="error_db_network_10_service_unavailable">Сервис недоступен</string>
+    <string name="error_db_network_24_network_error">Ошибка соединения</string>
+
+    <!--start screen-->
+    <string name="sign_in_start_screen">Вход</string>
+
+    <!--auth phone-->
+    <string name="phone_number_auth_phone">Номер телефона</string>
+    <string name="password_auth_phone">Пароль</string>
+    <string name="type_phone_text_auth_phone">Введите номер телефона</string>
+    <string name="send_sms_btn_auth_phone">Отправить СМС</string>
+    <string name="back">Вернуться назад</string>
+
+    <!--auth sms-->
     <string name="type_code_text_auth_sms">Введите код из СМС</string>
     <string name="verify_btn_auth_sms">Проверить</string>
+
+    <!--set bio-->
+    <string name="title_set_bio">Введите ваши данные</string>
+    <string name="name_set_bio">Имя</string>
+    <string name="surname_set_bio">Фамилия</string>
+    <string name="register_btn_set_bio">Зарегистрироваться</string>
+
 </resources>

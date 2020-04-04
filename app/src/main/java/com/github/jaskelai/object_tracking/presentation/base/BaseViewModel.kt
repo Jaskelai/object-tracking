@@ -2,8 +2,12 @@ package com.github.jaskelai.object_tracking.presentation.base
 
 import androidx.annotation.CallSuper
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavDirections
+import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
+import com.github.jaskelai.object_tracking.presentation.utils.SingleEventLiveData
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -12,8 +16,19 @@ import kotlin.coroutines.CoroutineContext
 
 abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
 
-    val errorMessageLiveData = MutableLiveData<Int>()
+    val errorMessageLiveData = MutableLiveData<String>()
     val progressLiveData = MutableLiveData<Boolean>()
+
+    private val _navigation = SingleEventLiveData<NavigationCommand>()
+    val navigation: LiveData<NavigationCommand> = _navigation
+
+    init {
+        progressLiveData.value = false
+    }
+
+    fun navigate(directions: NavDirections) {
+        _navigation.value = NavigationCommand.To(directions)
+    }
 
     private val superVisorJob = SupervisorJob()
 
@@ -25,8 +40,8 @@ abstract class BaseViewModel : ViewModel(), LifecycleObserver, CoroutineScope {
         handleCoroutineException(exception)
     }
 
-    init {
-        progressLiveData.value = false
+    open fun onBackButtonClicked() {
+        _navigation.value = NavigationCommand.Back
     }
 
     @CallSuper
