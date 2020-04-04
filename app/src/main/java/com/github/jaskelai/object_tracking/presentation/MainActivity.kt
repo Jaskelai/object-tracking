@@ -3,13 +3,14 @@ package com.github.jaskelai.object_tracking.presentation
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import androidx.navigation.findNavController
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
+import com.github.jaskelai.object_tracking.getAppComponent
 import com.github.jaskelai.object_tracking.presentation.di.MainSubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
-import com.github.jaskelai.object_tracking.presentation.utils.ext.getAppComponent
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -22,8 +23,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private val mainViewModel: MainViewModel by viewModels { viewModelFactory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        mainSubcomponent = getAppComponent()
-            .mainSubcomponentBuilder()
+        mainSubcomponent = getAppComponent().mainSubcomponentBuilder()
             .build()
         mainSubcomponent.inject(this)
 
@@ -42,3 +42,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 }
+
+fun Fragment.getMainActivity(): MainActivity = activity as MainActivity
+
+fun Fragment.getMainActivitySubcomponent(): MainSubcomponent = getMainActivity().mainSubcomponent

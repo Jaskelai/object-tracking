@@ -6,6 +6,7 @@ import com.github.jaskelai.object_tracking.presentation.ui.auth.auth_phone.di.Au
 import com.github.jaskelai.object_tracking.presentation.ui.auth.auth_sms.di.AuthSmsSubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.auth.set_bio.di.SetBioSubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.auth.start_screen.di.StartScreenSubcomponent
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.di.MainFlowSubcomponent
 import dagger.Subcomponent
 
 @Subcomponent(modules = [MainModule::class])
@@ -24,4 +25,5 @@ interface MainSubcomponent {
     fun authPhoneSubcomponentBuilder(): AuthPhoneSubcomponent.Builder
     fun authSmsSubcomponentBuilder(): AuthSmsSubcomponent.Builder
     fun setBioSubcomponentBuilder(): SetBioSubcomponent.Builder
+    fun mainFlowSubcomponentBuilder(): MainFlowSubcomponent.Builder
 }

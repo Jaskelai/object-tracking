@@ -1,5 +1,6 @@
 package com.github.jaskelai.object_tracking
 
+import android.app.Activity
 import android.app.Application
 import com.github.jaskelai.object_tracking.di.AppComponent
 import com.github.jaskelai.object_tracking.di.DaggerAppComponent
@@ -16,3 +17,5 @@ class AppDelegate : Application() {
         appComponent.inject(this)
     }
 }
+
+fun Activity.getAppComponent(): AppComponent = (application as AppDelegate).appComponent
