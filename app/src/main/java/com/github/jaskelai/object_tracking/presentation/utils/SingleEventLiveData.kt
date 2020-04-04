@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicBoolean
 class SingleEventLiveData<T>() : MutableLiveData<T>() {
 
     constructor(t: T): this() {
-        super.setValue(value)
+        super.setValue(t)
     }
 
     private val pending = AtomicBoolean(false)

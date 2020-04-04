@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.data.di
+package com.github.jaskelai.object_tracking.data.network.di
 
 import com.github.jaskelai.object_tracking.di.scope.PerApp
 import com.google.firebase.auth.FirebaseAuth

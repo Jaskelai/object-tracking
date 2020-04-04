@@ -1,7 +1,7 @@
 package com.github.jaskelai.object_tracking.data.network.user
 
 import com.github.jaskelai.object_tracking.R
-import com.github.jaskelai.object_tracking.data.di.UserDBFirebaseQualifier
+import com.github.jaskelai.object_tracking.data.network.di.UserDBFirebaseQualifier
 import com.github.jaskelai.object_tracking.data.mapper.FirebaseAuthErrorMapper
 import com.github.jaskelai.object_tracking.data.mapper.FirebaseDBErrorMapper
 import com.github.jaskelai.object_tracking.data.network.user.model.UserInfoNet

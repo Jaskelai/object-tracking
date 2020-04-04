@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.data.di
+package com.github.jaskelai.object_tracking.data.network.di
 
 import com.github.jaskelai.object_tracking.data.network.user.NetworkUserDataSource
 import com.github.jaskelai.object_tracking.data.network.user.NetworkUserDataSourceImpl
@@ -27,7 +27,9 @@ abstract class NetModule {
         @Provides
         @JvmStatic
         @UserDBFirebaseQualifier
-        fun provideFirebaseUserDatabase(db: FirebaseDatabase): DatabaseReference = db.getReference(USERS_DB_PATH)
+        fun provideFirebaseUserDatabase(db: FirebaseDatabase): DatabaseReference = db.getReference(
+            USERS_DB_PATH
+        )
     }
 
     @PerApp

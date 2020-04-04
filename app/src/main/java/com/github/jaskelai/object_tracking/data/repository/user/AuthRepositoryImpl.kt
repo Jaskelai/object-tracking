@@ -1,6 +1,8 @@
 package com.github.jaskelai.object_tracking.data.repository.user
 
 import com.github.jaskelai.object_tracking.R
+import com.github.jaskelai.object_tracking.data.local.db.user.DBUserDataSource
+import com.github.jaskelai.object_tracking.data.local.db.user.model.UserDB
 import com.github.jaskelai.object_tracking.data.local.shared_prefs.SharedPrefsProvider
 import com.github.jaskelai.object_tracking.data.network.user.NetworkUserDataSource
 import com.github.jaskelai.object_tracking.domain.interfaces.AuthRepository
@@ -15,7 +17,8 @@ import javax.inject.Inject
 class AuthRepositoryImpl @Inject constructor(
     private val auth: FirebaseAuth,
     private val sharedPrefsProvider: SharedPrefsProvider,
-    private val networkUserDataSource: NetworkUserDataSource
+    private val networkUserDataSource: NetworkUserDataSource,
+    private val dbUserDataSource: DBUserDataSource
 ) : AuthRepository {
 
     override var verificationId: String? = ""
@@ -46,6 +49,15 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun setBio(userBio: UserBio): Result<Unit, ErrorModel> =
         auth.currentUser?.uid?.let {
-            networkUserDataSource.setBio(userBio, it)
+            val result = networkUserDataSource.setBio(userBio, it)
+
+            when (result) {
+                is Result.Success -> dbUserDataSource.saveUser(UserDB(
+                    id = it,
+                    name = userBio.name,
+                    surname = userBio.surname
+                ))
+            }
+            result
         } ?: Result.Error(ErrorModel(messageId = R.string.error_common))
 }
