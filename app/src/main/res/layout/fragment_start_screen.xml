@@ -12,25 +12,19 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient_auth">
+        android:background="@drawable/gradient_auth"
+        android:fitsSystemWindows="true">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivLogoStartScreen"
             android:layout_width="@dimen/img_logo_start_screen"
             android:layout_height="@dimen/img_logo_start_screen"
-            app:layout_constraintBottom_toTopOf="@id/btnToSignInStartScreen"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_logo"
             app:tint="@color/color_B3FFFFFF" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/gdStartScreen"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnToSignInStartScreen"
@@ -42,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gdStartScreen"
+            app:layout_constraintTop_toBottomOf="@id/ivLogoStartScreen"
             app:layout_constraintVertical_chainStyle="packed" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
