@@ -12,22 +12,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradient_auth"
+        android:fitsSystemWindows="true"
         android:orientation="vertical">
 
         <include
             layout="@layout/view_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_m"
+            android:layout_marginTop="@dimen/margin_m"
             app:vm="@{viewModel}" />
 
         <TextView
             style="@style/TitleAuth"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_m"
+            android:layout_marginEnd="@dimen/margin_m"
             android:gravity="center"
             android:text="@string/title_set_bio" />
 
@@ -36,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_m"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
             android:hint="@string/name_set_bio">
 
@@ -54,7 +55,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
-            android:layout_marginTop="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_m"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
             android:hint="@string/surname_set_bio">
 
@@ -73,7 +74,7 @@
             android:layout_height="@dimen/btn_height_auth"
             android:layout_gravity="center_horizontal"
             android:layout_marginStart="@dimen/et_margin_start_end_sign_in"
-            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_l"
             android:layout_marginEnd="@dimen/et_margin_start_end_sign_in"
             android:onClick="@{() -> viewModel.onRegisterClicked()}"
             android:text="@string/register_btn_set_bio"

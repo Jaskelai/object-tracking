@@ -6,7 +6,14 @@
         <item name="colorPrimary">@android:color/white</item>
         <item name="colorPrimaryDark">@color/color_727272</item>
         <item name="colorAccent">@android:color/white</item>
-        <item name="android:statusBarColor">@color/color_status_bar</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+    </style>
+
+    <style name="AppTheme.Splash">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
     </style>
 
     <style name="ErrorDialogTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -23,7 +30,7 @@
         <item name="strokeColor">@android:color/white</item>
         <item name="rippleColor">@android:color/white</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
-        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textSize">@dimen/text_m</item>
         <item name="android:letterSpacing">0.01</item>
         <item name="android:textAllCaps">false</item>
     </style>
@@ -42,18 +49,18 @@
 
     <style name="HelperTextEditText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textSize">@dimen/text_s</item>
     </style>
 
     <style name="ErrorText" parent="TextAppearance.AppCompat">
         <item name="android:textColor">@android:color/white</item>
         <item name="android:textColorHint">@android:color/white</item>
-        <item name="android:textSize">@dimen/text_12</item>
+        <item name="android:textSize">@dimen/text_s</item>
     </style>
 
     <style name="EditTextWhiteSignIn" parent="Widget.AppCompat.EditText">
         <item name="android:backgroundTint">@android:color/white</item>
-        <item name="android:textSize">@dimen/text_16</item>
+        <item name="android:textSize">@dimen/text_m</item>
         <item name="android:fontFamily">@font/roboto</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:letterSpacing">0.01</item>
@@ -65,7 +72,11 @@
         <item name="android:alpha">0.9</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:textSize">@dimen/text_24</item>
+        <item name="android:textSize">@dimen/text_l</item>
+    </style>
+
+    <style name="BottomNavigationViewTextStyle">
+        <item name="android:fontFamily">@font/roboto</item>
     </style>
 
 </resources>

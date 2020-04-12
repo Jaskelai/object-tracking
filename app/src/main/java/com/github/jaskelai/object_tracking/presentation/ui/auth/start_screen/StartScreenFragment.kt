@@ -5,8 +5,8 @@ import androidx.fragment.app.viewModels
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.FragmentStartScreenBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
+import com.github.jaskelai.object_tracking.presentation.getMainActivitySubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
-import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
 import javax.inject.Inject
 
 class StartScreenFragment : BaseFragment<FragmentStartScreenBinding, StartScreenViewModel>() {
@@ -19,8 +19,7 @@ class StartScreenFragment : BaseFragment<FragmentStartScreenBinding, StartScreen
     override fun getLayoutResId(): Int = R.layout.fragment_start_screen
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        getMainActivity().mainSubcomponent
-            .startScreenSubcomponentBuilder()
+        getMainActivitySubcomponent().startScreenSubcomponentBuilder()
             .build()
             .inject(this)
 

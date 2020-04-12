@@ -6,8 +6,8 @@ import androidx.lifecycle.observe
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.FragmentAuthPhoneBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
+import com.github.jaskelai.object_tracking.presentation.getMainActivitySubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
-import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -28,8 +28,7 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding, AuthPhoneViewMo
     override fun getLayoutResId(): Int = R.layout.fragment_auth_phone
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        getMainActivity().mainSubcomponent
-            .authPhoneSubcomponentBuilder()
+        getMainActivitySubcomponent().authPhoneSubcomponentBuilder()
             .build()
             .inject(this)
 

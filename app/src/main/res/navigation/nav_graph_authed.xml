@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph_authed">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_authed"
+    app:startDestination="@id/mainFlowFragment">
+
+    <fragment
+        android:id="@+id/mainFlowFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.MainFlowFragment"
+        android:label="MainFlowFragment"
+        tools:layout="@layout/fragment_main_flow" />
 
 </navigation>

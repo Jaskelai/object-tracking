@@ -1,9 +1,6 @@
 package com.github.jaskelai.object_tracking.data.local.db.user.dao
 
-import androidx.room.Dao
-import androidx.room.Query
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
+import androidx.room.*
 import com.github.jaskelai.object_tracking.data.local.db.user.model.UserDB
 import kotlinx.coroutines.flow.Flow
 
@@ -19,6 +16,6 @@ interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveUser(userDB: UserDB)
 
-    @Query("DELETE FROM user")
-    fun deleteUser()
+    @Delete()
+    fun deleteUser(userDB: UserDB)
 }

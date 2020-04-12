@@ -5,8 +5,8 @@ import androidx.fragment.app.viewModels
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.FragmentAuthSmsBinding
 import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
+import com.github.jaskelai.object_tracking.presentation.getMainActivitySubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
-import com.github.jaskelai.object_tracking.presentation.utils.ext.getMainActivity
 import javax.inject.Inject
 
 class AuthSmsFragment : BaseFragment<FragmentAuthSmsBinding, AuthSmsViewModel>() {
@@ -19,8 +19,7 @@ class AuthSmsFragment : BaseFragment<FragmentAuthSmsBinding, AuthSmsViewModel>()
     override fun getLayoutResId(): Int = R.layout.fragment_auth_sms
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        getMainActivity().mainSubcomponent
-            .authSmsSubcomponentBuilder()
+        getMainActivitySubcomponent().authSmsSubcomponentBuilder()
             .build()
             .inject(this)
 

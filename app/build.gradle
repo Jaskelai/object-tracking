@@ -88,7 +88,7 @@ ext {
 
     ktxCoreVersion = '1.2.0'
     ktxActivityVersion = '1.1.0'
-    ktxFragmentVersion = '1.2.1'
+    ktxFragmentVersion = '1.2.4'
 
     lifecycleVersion = "2.2.0"
     roomVersion = "2.2.3"
@@ -144,6 +144,8 @@ dependencies {
     implementation "androidx.room:room-ktx:$roomVersion"
 
     //navigation
+    implementation 'androidx.navigation:navigation-fragment:2.2.1'
+    implementation 'androidx.navigation:navigation-ui:2.2.1'
     implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
     implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
 

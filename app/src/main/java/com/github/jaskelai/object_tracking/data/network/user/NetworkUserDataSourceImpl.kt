@@ -56,8 +56,8 @@ class NetworkUserDataSourceImpl @Inject constructor(
             userDbReference.child(userId).addValueEventListener(object : ValueEventListener {
 
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
-                    val user = dataSnapshot.value as? UserInfoNet
-                    user ?: return
+                    val user = dataSnapshot.getValue(UserInfoNet::class.java)
+                    user ?: cont.resume(Result.Error(ErrorModel(messageId = R.string.error_common)))
                     cont.resume(Result.Success())
                     userDbReference.child(userId).removeEventListener(this)
                 }

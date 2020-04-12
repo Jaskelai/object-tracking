@@ -44,4 +44,9 @@
     <string name="surname_set_bio">Фамилия</string>
     <string name="register_btn_set_bio">Зарегистрироваться</string>
 
+    <!--main flow-->
+    <string name="user_items_bottom_bar_main_flow">Личные</string>
+    <string name="all_items_bottom_bar_main_flow">Все</string>
+    <string name="profile_bottom_bar_main_flow">Профиль</string>
+
 </resources>
