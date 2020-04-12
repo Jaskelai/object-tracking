@@ -1,41 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_1">1dp</dimen>
-    <dimen name="margin_2">2dp</dimen>
-    <dimen name="margin_xsmall">4dp</dimen>
-    <dimen name="margin_small">8dp</dimen>
-    <dimen name="margin_10">10dp</dimen>
-    <dimen name="margin_12">12dp</dimen>
-    <dimen name="margin_14">14dp</dimen>
-    <dimen name="margin_medium">16dp</dimen>
-    <dimen name="margin_18">18dp</dimen>
-    <dimen name="margin_20">20dp</dimen>
-    <dimen name="margin_22">22dp</dimen>
-    <dimen name="margin_large">24dp</dimen>
-    <dimen name="margin_28">28dp</dimen>
-    <dimen name="margin_30">30dp</dimen>
-    <dimen name="margin_32">32dp</dimen>
-    <dimen name="margin_34">34dp</dimen>
-    <dimen name="margin_xlarge">36dp</dimen>
-    <dimen name="margin_38">38dp</dimen>
-    <dimen name="margin_40">40dp</dimen>
-    <dimen name="margin_44">44dp</dimen>
-    <dimen name="margin_46">46dp</dimen>
+    <dimen name="margin_xs">4dp</dimen>
+    <dimen name="margin_s">8dp</dimen>
+    <dimen name="margin_sm">12dp</dimen>
+    <dimen name="margin_m">16dp</dimen>
+    <dimen name="margin_ml">20dp</dimen>
+    <dimen name="margin_l">24dp</dimen>
+    <dimen name="margin_xl">36dp</dimen>
 
-    <dimen name="text_8">8sp</dimen>
-    <dimen name="text_10">10sp</dimen>
-    <dimen name="text_11">11sp</dimen>
-    <dimen name="text_12">12sp</dimen>
-    <dimen name="text_13">13sp</dimen>
-    <dimen name="text_14">14sp</dimen>
-    <dimen name="text_15">15sp</dimen>
-    <dimen name="text_16">16sp</dimen>
-    <dimen name="text_17">17sp</dimen>
-    <dimen name="text_18">18sp</dimen>
-    <dimen name="text_19">19sp</dimen>
-    <dimen name="text_20">20sp</dimen>
-    <dimen name="text_22">22sp</dimen>
-    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_s">12sp</dimen>
+    <dimen name="text_m">16sp</dimen>
+    <dimen name="text_l">20sp</dimen>
+    <dimen name="text_xl">24sp</dimen>
 
     <!--dimens for auth-->
     <dimen name="progress_bar_auth_width">132dp</dimen>
@@ -50,6 +26,7 @@
     <dimen name="btn_back_sign_in">24dp</dimen>
 
     <!--dimens for main flow-->
+    <dimen name="toolbar_height_main_flow">64dp</dimen>
     <dimen name="bottom_nav_indicator_height_main_flow">2dp</dimen>
 
 </resources>
