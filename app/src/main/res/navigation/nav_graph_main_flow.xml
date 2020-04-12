@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_main_flow"
+    app:startDestination="@id/userItemsFragment">
+
+    <fragment
+        android:id="@+id/userItemsFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.UserItemsFragment"
+        android:label="UserItemsFragment"
+        tools:layout="@layout/fragment_user_items">
+    </fragment>
+
+    <fragment
+        android:id="@+id/allItemsFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.all_items.AllItemsFragment"
+        android:label="AllItemsFragment"
+        tools:layout="@layout/fragment_all_items">
+    </fragment>
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+    </fragment>
+
+</navigation>

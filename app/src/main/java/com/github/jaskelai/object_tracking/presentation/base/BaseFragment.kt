@@ -39,18 +39,12 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
     protected abstract fun getLayoutResId(): Int
 
     @CallSuper
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        init()
-    }
-
-    @CallSuper
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
         doDataBinding()
         observeError()
+        init()
     }
 
     private fun doDataBinding() {
