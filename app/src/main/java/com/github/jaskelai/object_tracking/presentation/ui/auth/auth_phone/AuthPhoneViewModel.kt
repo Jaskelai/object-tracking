@@ -4,11 +4,14 @@ import androidx.lifecycle.MutableLiveData
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.data.mapper.FirebaseAuthErrorMapper
 import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
+import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
+import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.ext.onlyDigits
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.PhoneAuthCredential
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 const val TIMEOUT_DURATION_SECONDS = 15L
@@ -48,12 +51,38 @@ class AuthPhoneViewModel @Inject constructor(
 
     fun onVerificationComplete(credential: PhoneAuthCredential) {
         when (credential.smsCode) {
-            null -> { }
+            null -> {
+                launch {
+                    phoneAuthInteractor.setCredentialViaObject(credential)
+
+                    val result = phoneAuthInteractor.signIn()
+
+                    invalidateAfterRequest()
+
+                    handleSignInResult(result)
+                }
+            }
             else -> {
                 phoneAuthInteractor.setCredentialViaObject(credential)
                 invalidateAfterRequest()
 
                 navigate(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToAuthSmsFragment())
+            }
+        }
+    }
+
+    private fun handleSignInResult(result: Result<Unit, ErrorModel>) {
+        when (result) {
+            is Result.Success -> {
+                navigate(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToMainFragment())
+            }
+            is Result.Error -> {
+                if (result.data?.message != null) {
+                    errorMessageLiveData.value = result.data.message
+                }
+                if (result.data?.messageId != null)
+                    errorMessageLiveData.value =
+                        resourceProvider.getString(result.data.messageId)
             }
         }
     }

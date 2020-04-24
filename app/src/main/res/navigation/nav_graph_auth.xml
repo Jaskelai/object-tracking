@@ -29,6 +29,15 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/wait"
             app:popExitAnim="@anim/slide_out_right" />
+
+        <action
+            android:id="@+id/action_authPhoneFragment_to_mainFragment"
+            app:destination="@id/nav_graph_authed"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpTo="@id/startScreenFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <fragment
@@ -47,6 +56,8 @@
     </fragment>
 
     <include app:graph="@navigation/nav_graph_set_bio" />
+
+    <include app:graph="@navigation/nav_graph_authed" />
 
 
 </navigation>

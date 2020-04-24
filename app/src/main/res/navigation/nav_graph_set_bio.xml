@@ -13,7 +13,9 @@
 
         <action
             android:id="@+id/action_setBioFragment_to_mainFlowFragment"
-            app:destination="@id/nav_graph_authed" />
+            app:destination="@id/nav_graph_authed"
+            app:popUpTo="@id/startScreenFragment"
+            app:popUpToInclusive="true"/>
     </fragment>
 
     <include app:graph="@navigation/nav_graph_authed" />
