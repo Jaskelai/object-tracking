@@ -14,13 +14,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/toolbar"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <include
+            layout="@layout/toolbar"
+            app:toolbarName="@{@string/user_items_title}"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/background_rounded_white"/>
+            android:background="@drawable/background_rounded_white">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_all_items"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin_m"
+                android:src="@drawable/ic_add"
+                app:backgroundTint="@color/color_primary_violet"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@color/color_default" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

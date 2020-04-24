@@ -49,4 +49,7 @@
     <string name="all_items_bottom_bar_main_flow">Все</string>
     <string name="profile_bottom_bar_main_flow">Профиль</string>
 
+    <!--user items-->
+    <string name="user_items_title">Ваши текущие предметы</string>
+
 </resources>

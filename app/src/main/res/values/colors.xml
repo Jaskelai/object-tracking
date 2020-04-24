@@ -5,6 +5,7 @@
     <color name="color_primary_blue">#401CE9</color>
     <color name="color_primary_violet">#872CC6</color>
     <color name="color_inactive">#D1D3D4</color>
+    <color name="color_default">#ffffff</color>
 
     <!-- status bar auth -->
     <color name="color_status_bar">#27108B</color>
