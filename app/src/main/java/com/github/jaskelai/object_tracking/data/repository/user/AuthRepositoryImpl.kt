@@ -36,14 +36,16 @@ class AuthRepositoryImpl @Inject constructor(
 
         when (result) {
             is Result.Success -> {
-                sharedPrefsProvider.writeString(
-                    key = KEY_AUTH_STATE,
-                    value = AuthState.AUTHED_WITH_SMS.name
-                )
+                setAuthState(AuthState.AUTHED_WITH_SMS)
             }
         }
         result
     } ?: Result.Error(ErrorModel(messageId = R.string.error_common))
+
+    override fun setAuthState(authState: AuthState) = sharedPrefsProvider.writeString(
+            key = KEY_AUTH_STATE,
+            value = authState.name
+        )
 
     override fun getAuthState(): AuthState = AuthState.valueOf(
         sharedPrefsProvider.readString(KEY_AUTH_STATE) ?: AuthState.NOT_AUTHED.name
@@ -60,10 +62,7 @@ class AuthRepositoryImpl @Inject constructor(
                         name = userBio.name,
                         surname = userBio.surname
                     ))
-                    sharedPrefsProvider.writeString(
-                        key = KEY_AUTH_STATE,
-                        value = AuthState.FULL_AUTHED.name
-                    )
+                    setAuthState(AuthState.FULL_AUTHED)
                 }
             }
             result

@@ -41,7 +41,7 @@ class AuthSmsViewModel @Inject constructor(
             progressLiveData.value = true
 
             phoneAuthInteractor.setCode(code)
-            val result = phoneAuthInteractor.signIn()
+            val result = phoneAuthInteractor.signIn(needSms = true)
 
             invalidateAfterRequest()
 

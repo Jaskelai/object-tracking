@@ -55,7 +55,7 @@ class AuthPhoneViewModel @Inject constructor(
                 launch {
                     phoneAuthInteractor.setCredentialViaObject(credential)
 
-                    val result = phoneAuthInteractor.signIn()
+                    val result = phoneAuthInteractor.signIn(needSms = false)
 
                     invalidateAfterRequest()
 
