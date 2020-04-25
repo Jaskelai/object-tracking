@@ -5,6 +5,7 @@ import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
+import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -52,7 +53,7 @@ class AuthSmsViewModel @Inject constructor(
     private fun handleResult(result: Result<Unit, ErrorModel>) {
         when (result) {
             is Result.Success -> {
-                navigate(AuthSmsFragmentDirections.actionAuthSmsFragmentToSetBioFragment())
+                navigate(NavigationCommand.To(AuthSmsFragmentDirections.actionAuthSmsFragmentToSetBioFragment()))
             }
             is Result.Error -> {
                 if (result.data?.message != null) {

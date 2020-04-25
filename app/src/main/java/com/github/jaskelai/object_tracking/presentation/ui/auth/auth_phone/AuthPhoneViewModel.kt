@@ -7,6 +7,7 @@ import com.github.jaskelai.object_tracking.domain.interactor.PhoneAuthInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
+import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
 import com.github.jaskelai.object_tracking.presentation.utils.ext.onlyDigits
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import com.google.firebase.FirebaseException
@@ -66,7 +67,7 @@ class AuthPhoneViewModel @Inject constructor(
                 phoneAuthInteractor.setCredentialViaObject(credential)
                 invalidateAfterRequest()
 
-                navigate(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToAuthSmsFragment())
+                navigate(NavigationCommand.To(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToAuthSmsFragment()))
             }
         }
     }
@@ -74,7 +75,7 @@ class AuthPhoneViewModel @Inject constructor(
     private fun handleSignInResult(result: Result<Unit, ErrorModel>) {
         when (result) {
             is Result.Success -> {
-                navigate(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToMainFragment())
+                navigate(NavigationCommand.To(AuthPhoneFragmentDirections.actionAuthPhoneFragmentToMainFragment()))
             }
             is Result.Error -> {
                 if (result.data?.message != null) {

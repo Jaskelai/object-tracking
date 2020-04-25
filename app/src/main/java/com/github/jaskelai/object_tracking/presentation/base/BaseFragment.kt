@@ -58,10 +58,29 @@ abstract class BaseFragment<BINDING : ViewDataBinding, VIEWMODEL : BaseViewModel
     private fun observeNavigation() {
         viewModel.navigation.observe(viewLifecycleOwner) { command ->
             when (command) {
-                is NavigationCommand.To -> findNavController().navigate(command.directions, getExtras())
+                is NavigationCommand.To -> findNavController().navigate(
+                    command.directions,
+                    getExtras()
+                )
                 is NavigationCommand.Back -> findNavController().navigateUp()
+                is NavigationCommand.BackWithResult -> {
+                    findNavController().run {
+                        previousBackStackEntry?.savedStateHandle?.set(
+                            command.reqCode,
+                            command.result
+                        )
+                        navigateUp()
+                    }
+                }
             }
         }
+    }
+
+    protected fun <T : Any> observeNavigationResult(key: String) {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<T>(key)
+            ?.observe(viewLifecycleOwner) {
+                viewModel.onNavigationResult(it)
+            }
     }
 
     open fun getExtras(): FragmentNavigator.Extras = FragmentNavigatorExtras()

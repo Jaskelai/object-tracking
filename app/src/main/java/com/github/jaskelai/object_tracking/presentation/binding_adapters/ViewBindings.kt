@@ -10,3 +10,11 @@ fun setVisibility(view: View, value: Boolean?) {
         false -> view.visibility = View.INVISIBLE
     }
 }
+
+@BindingAdapter("isVisibleWithGone")
+fun setVisibilityWithGone(view: View, value: Boolean?) {
+    when (value) {
+        true -> view.visibility = View.VISIBLE
+        false -> view.visibility = View.GONE
+    }
+}

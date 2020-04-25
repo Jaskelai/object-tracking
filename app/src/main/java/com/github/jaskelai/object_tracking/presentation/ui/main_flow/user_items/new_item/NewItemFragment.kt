@@ -1,5 +1,6 @@
 package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import com.github.jaskelai.object_tracking.R
@@ -23,5 +24,9 @@ class NewItemFragment : BaseFragment<FragmentNewItemBinding, NewItemViewModel>()
             .inject(this)
 
         super.onCreate(savedInstanceState)
+    }
+
+    override fun init() {
+        observeNavigationResult<Uri>(viewModel.reqCodePhoto.toString())
     }
 }

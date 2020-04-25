@@ -80,8 +80,23 @@ abstract class BaseBottomSheet<BINDING : ViewDataBinding, VIEWMODEL : BaseViewMo
                     getExtras()
                 )
                 is NavigationCommand.Back -> findNavController().navigateUp()
+                is NavigationCommand.BackWithResult -> {
+                    findNavController().run {
+                        previousBackStackEntry?.savedStateHandle?.set(
+                            command.reqCode.toString(),
+                            command.result
+                        )
+                        popBackStack()
+                    }
+                }
             }
         }
+    }
+
+    protected fun <T> setNavigationResult(key: String) {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<T>(key)
+            ?.observe(viewLifecycleOwner) {
+            }
     }
 
     open fun getExtras(): FragmentNavigator.Extras = FragmentNavigatorExtras()

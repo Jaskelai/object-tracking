@@ -5,6 +5,7 @@ import com.github.jaskelai.object_tracking.domain.model.bio.UserBio
 import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
+import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
 import com.github.jaskelai.object_tracking.presentation.ui.auth.set_bio.mediator.SetBioFieldMediator
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import kotlinx.coroutines.launch
@@ -33,7 +34,7 @@ class SetBioViewModel @Inject constructor(
     private fun handleResult(result: Result<Unit, ErrorModel>) {
         when (result) {
             is Result.Success -> {
-                navigate(SetBioFragmentDirections.actionSetBioFragmentToMainFlowFragment())
+                navigate(NavigationCommand.To(SetBioFragmentDirections.actionSetBioFragmentToMainFlowFragment()))
             }
             is Result.Error -> {
                 if (result.data?.message != null) {
