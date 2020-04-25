@@ -4,7 +4,8 @@ import com.github.jaskelai.object_tracking.di.scope.PerFragment
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.MainFlowFragment
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.all_items.di.AllItemsSubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.profile.di.ProfileSubcomponent
-import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.di.UserItemsSubcomponent
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.di.UserItemsSubcomponent
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.di.NewItemSubcomponent
 import dagger.Subcomponent
 
 @Subcomponent(modules = [MainFlowModule::class])
@@ -22,4 +23,5 @@ interface MainFlowSubcomponent {
     fun allItemsSubcomponent(): AllItemsSubcomponent.Builder
     fun profileSubcomponent(): ProfileSubcomponent.Builder
     fun userItemsSubcomponent(): UserItemsSubcomponent.Builder
+    fun newItemSubcomponent(): NewItemSubcomponent.Builder
 }

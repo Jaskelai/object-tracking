@@ -7,9 +7,13 @@
 
     <fragment
         android:id="@+id/userItemsFragment"
-        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.UserItemsFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.UserItemsFragment"
         android:label="UserItemsFragment"
         tools:layout="@layout/fragment_user_items">
+
+        <action
+            android:id="@+id/action_userItemsFragment_to_newItemFragment"
+            app:destination="@id/newItemFragment" />
     </fragment>
 
     <fragment
@@ -24,6 +28,13 @@
         android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.profile.ProfileFragment"
         android:label="ProfileFragment"
         tools:layout="@layout/fragment_profile">
+    </fragment>
+
+    <fragment
+        android:id="@+id/newItemFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.NewItemFragment"
+        android:label="NewItemFragment"
+        tools:layout="@layout/fragment_new_item">
     </fragment>
 
 </navigation>

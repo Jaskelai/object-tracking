@@ -1,7 +1,7 @@
-package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.di
+package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.di
 
 import androidx.lifecycle.ViewModel
-import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.UserItemsViewModel
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.UserItemsViewModel
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelKey
 import dagger.Binds
 import dagger.Module

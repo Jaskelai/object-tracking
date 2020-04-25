@@ -1,7 +1,7 @@
-package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.di
+package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.di
 
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.di.PerMainFlow
-import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.UserItemsFragment
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.UserItemsFragment
 import dagger.Subcomponent
 
 @Subcomponent(modules = [UserItemsModule::class])

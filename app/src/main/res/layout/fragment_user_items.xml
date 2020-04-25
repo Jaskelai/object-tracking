@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.UserItemsViewModel" />
+            type="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.UserItemsViewModel" />
     </data>
 
     <LinearLayout
@@ -29,6 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin_m"
+                android:onClick="@{() -> viewModel.onNewItemClick()}"
                 android:src="@drawable/ic_add"
                 app:backgroundTint="@color/color_primary_violet"
                 app:layout_constraintBottom_toBottomOf="parent"
