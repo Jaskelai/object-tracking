@@ -83,7 +83,7 @@ abstract class BaseBottomSheet<BINDING : ViewDataBinding, VIEWMODEL : BaseViewMo
                 is NavigationCommand.BackWithResult -> {
                     findNavController().run {
                         previousBackStackEntry?.savedStateHandle?.set(
-                            command.reqCode.toString(),
+                            command.reqCode,
                             command.result
                         )
                         popBackStack()
@@ -115,7 +115,7 @@ abstract class BaseBottomSheet<BINDING : ViewDataBinding, VIEWMODEL : BaseViewMo
         findNavController().popBackStack()
     }
 
-    private fun showErrorDialog(errorMessage: String) {
+    protected fun showErrorDialog(errorMessage: String) {
         AlertDialog.Builder(ContextThemeWrapper(requireContext(), R.style.ErrorDialogTheme))
             .setMessage(errorMessage)
             .setPositiveButton(R.string.close_error_alert_dialog) { _, _ -> }
