@@ -4,6 +4,8 @@ import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.LiveData
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.setupWithNavController
@@ -13,11 +15,14 @@ import com.github.jaskelai.object_tracking.presentation.base.BaseFragment
 import com.github.jaskelai.object_tracking.presentation.getMainActivitySubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.di.MainFlowSubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
+import com.github.jaskelai.object_tracking.presentation.utils.ext.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.fragment_main_flow.*
 import javax.inject.Inject
 
 class MainFlowFragment : BaseFragment<FragmentMainFlowBinding, MainFlowViewModel>() {
+
+    private var currentNavController: LiveData<NavController>? = null
 
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
@@ -38,6 +43,20 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding, MainFlowViewModel
     override fun init() {
         val navController = requireActivity().findNavController(R.id.nav_host_main_flow_fragment)
         bottomNav.setupWithNavController(navController)
+
+        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
+
+        val navGraphIds = listOf(R.navigation.nav_graph_user_items, R.navigation.nav_graph_all_items, R.navigation.nav_graph_profile)
+
+        // Setup the bottom navigation view with a list of navigation graphs
+        val controller = bottomNavigationView.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = childFragmentManager,
+            containerId = R.id.nav_host_main_flow_fragment,
+            intent = requireActivity().intent
+        )
+
+        currentNavController = controller
     }
 }
 

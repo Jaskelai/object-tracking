@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph_main_flow"
+    android:id="@+id/nav_graph_user_items"
     app:startDestination="@id/userItemsFragment">
 
     <fragment
@@ -17,17 +17,10 @@
     </fragment>
 
     <fragment
-        android:id="@+id/allItemsFragment"
-        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.all_items.AllItemsFragment"
-        android:label="AllItemsFragment"
-        tools:layout="@layout/fragment_all_items">
-    </fragment>
-
-    <fragment
-        android:id="@+id/profileFragment"
-        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.profile.ProfileFragment"
-        android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile">
+        android:id="@+id/newItemFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.NewItemFragment"
+        android:label="NewItemFragment"
+        tools:layout="@layout/fragment_new_item">
     </fragment>
 
 </navigation>
