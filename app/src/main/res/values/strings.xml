@@ -52,4 +52,12 @@
     <!--user items-->
     <string name="user_items_title">Ваши текущие предметы</string>
 
+    <!--new item-->
+    <string name="title_new_item">Добавьте новый предмет</string>
+    <string name="name_label_new_item">Название:</string>
+    <string name="description_label_new_item">Описание:</string>
+    <string name="add_photo_label_new_item">Фотография:</string>
+    <string name="add_photo_btn_new_item">Добавьте фотографию</string>
+    <string name="save_btn_new_item">Сохранить предмет</string>
+
 </resources>

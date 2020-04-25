@@ -8,11 +8,123 @@
             type="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.NewItemViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:overScrollMode="always"
+        android:scrollbars="vertical"
+        android:background="@drawable/gradient_auth">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/view_back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_m"
+                app:vm="@{viewModel}" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/margin_m"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/title_new_item"
+                android:textColor="@color/color_default"
+                android:textSize="@dimen/text_l" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_m"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/name_label_new_item"
+                android:textColor="@color/color_default"
+                android:textSize="@dimen/text_m" />
+
+            <EditText
+                style="@style/NewItemEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_s"
+                android:layout_marginEnd="@dimen/margin_m"
+                android:background="@drawable/background_frame_gray"
+                android:maxLines="1"
+                android:textColor="@color/color_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_m"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/description_label_new_item"
+                android:textColor="@color/color_default"
+                android:textSize="@dimen/text_m" />
+
+            <EditText
+                style="@style/NewItemEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_s"
+                android:layout_marginEnd="@dimen/margin_m"
+                android:background="@drawable/background_frame_gray"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:maxLines="5"
+                android:minLines="5"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:textColor="@color/color_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_m"
+                android:fontFamily="@font/roboto_bold"
+                android:text="@string/add_photo_label_new_item"
+                android:textColor="@color/color_default"
+                android:textSize="@dimen/text_m" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/BtnWhiteBorder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_auth"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/margin_l"
+                android:layout_marginTop="@dimen/margin_s"
+                android:layout_marginEnd="@dimen/margin_l"
+                android:text="@string/add_photo_btn_new_item"
+                app:icon="@drawable/ic_add_a_photo"
+                app:iconTint="@color/color_default" />
+
+            <com.google.android.material.button.MaterialButton
+                style="@style/BtnWhiteBorder"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height_auth"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_l"
+                android:layout_marginEnd="@dimen/margin_m"
+                android:text="@string/save_btn_new_item"
+                app:strokeWidth="@dimen/save_btn_stroke_size_new_item" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </layout>

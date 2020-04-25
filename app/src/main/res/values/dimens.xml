@@ -30,4 +30,7 @@
     <dimen name="bottom_nav_indicator_height_main_flow">2dp</dimen>
     <dimen name="bottom_nav_icon_size_main_flow">28dp</dimen>
 
+    <!--dimens for new item-->
+    <dimen name="save_btn_stroke_size_new_item">2dp</dimen>
+
 </resources>
