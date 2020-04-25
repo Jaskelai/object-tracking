@@ -33,4 +33,8 @@
     <!--dimens for new item-->
     <dimen name="save_btn_stroke_size_new_item">2dp</dimen>
 
+    <!--dimens for photo chooser-->
+    <dimen name="dialog_height_photo_chooser">188dp</dimen>
+    <dimen name="icon_size_photo_chooser">56dp</dimen>
+
 </resources>

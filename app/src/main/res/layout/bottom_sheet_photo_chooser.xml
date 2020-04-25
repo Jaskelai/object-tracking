@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.photo_chooser.PhotoChooserViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dialog_height_photo_chooser"
+        android:background="@drawable/background_rounded_white"
+        android:maxHeight="@dimen/dialog_height_photo_chooser"
+        android:minHeight="@dimen/dialog_height_photo_chooser">
+
+        <ImageView
+            android:id="@+id/iv_new_photo"
+            android:layout_width="@dimen/icon_size_photo_chooser"
+            android:layout_height="@dimen/icon_size_photo_chooser"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_add_a_photo"
+            app:layout_constraintBottom_toTopOf="@id/tv_new_photo"
+            app:layout_constraintEnd_toStartOf="@id/gd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_new_photo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_s"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_horizontal"
+            android:text="@string/new_photo_choose_photo"
+            android:textColor="@color/color_text_default"
+            android:textSize="@dimen/text_s"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/gd"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_new_photo" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gd"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <ImageView
+            android:id="@+id/iv_gallery"
+            android:layout_width="@dimen/icon_size_photo_chooser"
+            android:layout_height="@dimen/icon_size_photo_chooser"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_folder"
+            app:layout_constraintBottom_toTopOf="@id/tv_gallery"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gd"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/tv_gallery"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_s"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_horizontal"
+            android:text="@string/gallery_choose_photo"
+            android:textColor="@color/color_text_default"
+            android:textSize="@dimen/text_s"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/gd"
+            app:layout_constraintTop_toBottomOf="@id/iv_gallery" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

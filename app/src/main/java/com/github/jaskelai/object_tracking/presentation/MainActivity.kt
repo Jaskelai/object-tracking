@@ -11,6 +11,7 @@ import com.github.jaskelai.object_tracking.domain.model.user_auth.AuthState
 import com.github.jaskelai.object_tracking.getAppComponent
 import com.github.jaskelai.object_tracking.presentation.di.MainSubcomponent
 import com.github.jaskelai.object_tracking.presentation.utils.ViewModelFactory
+import pub.devrel.easypermissions.EasyPermissions
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
@@ -42,6 +43,16 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 AuthState.FULL_AUTHED -> findNavController(R.id.nav_host_fragment_main).setGraph(R.navigation.nav_graph_authed)
             }
         }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
     }
 }
 

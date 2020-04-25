@@ -60,4 +60,8 @@
     <string name="add_photo_btn_new_item">Добавьте фотографию</string>
     <string name="save_btn_new_item">Сохранить предмет</string>
 
+    <!--choose photo-->
+    <string name="new_photo_choose_photo">Сделайте новый снимок</string>
+    <string name="gallery_choose_photo">Выберите из галереи</string>
+
 </resources>

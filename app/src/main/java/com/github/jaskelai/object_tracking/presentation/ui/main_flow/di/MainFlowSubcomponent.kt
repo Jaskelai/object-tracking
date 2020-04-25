@@ -6,6 +6,7 @@ import com.github.jaskelai.object_tracking.presentation.ui.main_flow.all_items.d
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.profile.di.ProfileSubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.di.UserItemsSubcomponent
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.di.NewItemSubcomponent
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.photo_chooser.di.PhotoChooserSubcomponent
 import dagger.Subcomponent
 
 @Subcomponent(modules = [MainFlowModule::class])
@@ -24,4 +25,5 @@ interface MainFlowSubcomponent {
     fun profileSubcomponent(): ProfileSubcomponent.Builder
     fun userItemsSubcomponent(): UserItemsSubcomponent.Builder
     fun newItemSubcomponent(): NewItemSubcomponent.Builder
+    fun photoChooserSubcomponent(): PhotoChooserSubcomponent.Builder
 }

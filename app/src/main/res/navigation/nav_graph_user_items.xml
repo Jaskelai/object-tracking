@@ -24,6 +24,16 @@
         android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.NewItemFragment"
         android:label="NewItemFragment"
         tools:layout="@layout/fragment_new_item">
+        <action
+            android:id="@+id/action_newItemFragment_to_choosePhotoFragment"
+            app:destination="@id/choosePhotoFragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/choosePhotoFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.photo_chooser.PhotoChooserBottomSheet"
+        android:label="ChoosePhotoFragment"
+        tools:layout="@layout/bottom_sheet_photo_chooser">
+    </dialog>
 
 </navigation>
