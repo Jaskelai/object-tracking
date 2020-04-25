@@ -22,8 +22,6 @@ import javax.inject.Inject
 
 class MainFlowFragment : BaseFragment<FragmentMainFlowBinding, MainFlowViewModel>() {
 
-    private var currentNavController: LiveData<NavController>? = null
-
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
@@ -31,6 +29,8 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding, MainFlowViewModel
     override fun getLayoutResId(): Int = R.layout.fragment_main_flow
 
     lateinit var mainFlowSubcomponent: MainFlowSubcomponent
+
+    private var currentNavController: LiveData<NavController>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainFlowSubcomponent = getMainActivitySubcomponent().mainFlowSubcomponentBuilder()
@@ -44,11 +44,15 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding, MainFlowViewModel
         val navController = requireActivity().findNavController(R.id.nav_host_main_flow_fragment)
         bottomNav.setupWithNavController(navController)
 
-        val bottomNavigationView = requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
+        val bottomNavigationView =
+            requireActivity().findViewById<BottomNavigationView>(R.id.bottomNav)
 
-        val navGraphIds = listOf(R.navigation.nav_graph_user_items, R.navigation.nav_graph_all_items, R.navigation.nav_graph_profile)
+        val navGraphIds = listOf(
+            R.navigation.nav_graph_user_items,
+            R.navigation.nav_graph_all_items,
+            R.navigation.nav_graph_profile
+        )
 
-        // Setup the bottom navigation view with a list of navigation graphs
         val controller = bottomNavigationView.setupWithNavController(
             navGraphIds = navGraphIds,
             fragmentManager = childFragmentManager,
@@ -60,4 +64,5 @@ class MainFlowFragment : BaseFragment<FragmentMainFlowBinding, MainFlowViewModel
     }
 }
 
-fun Fragment.getMainFlowSubcomponent() = (parentFragment?.parentFragment as MainFlowFragment).mainFlowSubcomponent
+fun Fragment.getMainFlowSubcomponent() =
+    (parentFragment?.parentFragment as MainFlowFragment).mainFlowSubcomponent
