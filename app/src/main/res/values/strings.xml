@@ -63,5 +63,7 @@
     <!--choose photo-->
     <string name="new_photo_choose_photo">Сделайте новый снимок</string>
     <string name="gallery_choose_photo">Выберите из галереи</string>
+    <string name="not_recognized_choose_photo">Не могу распознать изображение</string>
+    <string name="photo_not_available_choose_photo">Изображение недоступно</string>
 
 </resources>
