@@ -37,11 +37,11 @@ class NewItemViewModel @Inject constructor(
         }
     }
 
-    private fun handleLabelingResult(result: Result<List<PhotoLabel>, ErrorModel>) {
+    private fun handleLabelingResult(result: Result<List<String>, ErrorModel>) {
         when (result) {
             is Result.Success -> {
                 for (label in result.data!!) {
-                    //TODO
+                    println(label)
                 }
             }
             is Result.Error -> {

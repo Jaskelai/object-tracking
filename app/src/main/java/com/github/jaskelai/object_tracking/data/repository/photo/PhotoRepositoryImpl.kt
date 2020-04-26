@@ -27,6 +27,7 @@ class PhotoRepositoryImpl @Inject constructor(
 
     private companion object {
         const val PATTERN_FORMAT_DATE = "yyyyMMdd_HHmmss"
+        const val LANG = "en-ru"
     }
 
     override val currentImageFilePath = MutableLiveData<String>()

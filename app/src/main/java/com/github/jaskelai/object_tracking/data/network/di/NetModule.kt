@@ -2,6 +2,8 @@ package com.github.jaskelai.object_tracking.data.network.di
 
 import com.github.jaskelai.object_tracking.data.network.user.NetworkUserDataSource
 import com.github.jaskelai.object_tracking.data.network.user.NetworkUserDataSourceImpl
+import com.github.jaskelai.object_tracking.data.network.translate.NetworkTranslationDataSource
+import com.github.jaskelai.object_tracking.data.network.translate.NetworkTranslationDataSourceImpl
 import com.github.jaskelai.object_tracking.di.scope.PerApp
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -35,6 +37,10 @@ abstract class NetModule {
     @PerApp
     @Binds
     abstract fun bind1(impl: NetworkUserDataSourceImpl): NetworkUserDataSource
+
+    @PerApp
+    @Binds
+    abstract fun bind2(impl: NetworkTranslationDataSourceImpl): NetworkTranslationDataSource
 }
 
 @Qualifier

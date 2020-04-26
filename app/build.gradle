@@ -32,11 +32,15 @@ android {
         debug {
             minifyEnabled false
             applicationIdSuffix ".debug"
+            buildConfigField "String", "YANDEX_TRANSLATE_URL", "\"https://translate.yandex.net/api/v1.5/tr.json/\""
+            buildConfigField "String", "YANDEX_TRANSLATE_KEY", "\"trnsl.1.1.20200426T142148Z.9f7a08686b6c7314.54aaf767aeac3fc452223136e3cd5f71542f1276\""
         }
 
         release {
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "YANDEX_TRANSLATE_URL", "\"https://translate.yandex.net/api/v1.5/tr.json/\""
+            buildConfigField "String", "YANDEX_TRANSLATE_KEY", "\"trnsl.1.1.20200426T142148Z.9f7a08686b6c7314.54aaf767aeac3fc452223136e3cd5f71542f1276\""
         }
     }
 
