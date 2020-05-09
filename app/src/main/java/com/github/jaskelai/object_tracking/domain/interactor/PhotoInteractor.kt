@@ -42,7 +42,6 @@ class PhotoInteractor @Inject constructor(
                     )
                 }
             } catch (ex: Exception) {
-                println(ex.message)
                 Result.Success(resultOnlyName)
             }
 

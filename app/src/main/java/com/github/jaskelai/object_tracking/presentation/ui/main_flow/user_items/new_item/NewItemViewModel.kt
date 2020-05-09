@@ -41,7 +41,6 @@ class NewItemViewModel @Inject constructor(
         when (result) {
             is Result.Success -> {
                 for (label in result.data!!) {
-                    println(label)
                 }
             }
             is Result.Error -> {

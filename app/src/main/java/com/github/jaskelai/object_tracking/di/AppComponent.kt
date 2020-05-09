@@ -2,12 +2,10 @@ package com.github.jaskelai.object_tracking.di
 
 import android.content.Context
 import com.github.jaskelai.object_tracking.AppDelegate
-import com.github.jaskelai.object_tracking.data.network.di.AuthModule
-import com.github.jaskelai.object_tracking.data.network.di.NetModule
 import com.github.jaskelai.object_tracking.data.di.RepositoryModule
 import com.github.jaskelai.object_tracking.data.local.di.RoomDBModule
 import com.github.jaskelai.object_tracking.data.local.di.SharedPrefsModule
-import com.github.jaskelai.object_tracking.data.network.di.RetrofitYandexTranslateModule
+import com.github.jaskelai.object_tracking.data.network.di.*
 import com.github.jaskelai.object_tracking.di.scope.PerApp
 import com.github.jaskelai.object_tracking.presentation.di.MainSubcomponent
 import dagger.BindsInstance
@@ -20,8 +18,10 @@ import dagger.Component
         AuthModule::class,
         SharedPrefsModule::class,
         RoomDBModule::class,
+        NetCommonModule::class,
         NetModule::class,
-        RetrofitYandexTranslateModule::class
+        YandexTranslateNetModule::class,
+        GyazoNetModule::class
     ]
 )
 interface AppComponent {

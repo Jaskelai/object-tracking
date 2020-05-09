@@ -7,13 +7,13 @@ import dagger.Module
 import dagger.Provides
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import javax.inject.Qualifier
 
 @Module
-class RetrofitYandexTranslateModule {
+class YandexTranslateNetModule {
 
     private companion object {
         const val KEY_QUERY_NAME = "key"
@@ -21,30 +21,43 @@ class RetrofitYandexTranslateModule {
 
     @Provides
     @PerApp
-    fun provideYandexTranslationApi(retrofit: Retrofit) =
+    fun provideYandexTranslationApi(@YandexTranslateQualifier retrofit: Retrofit) =
         retrofit.create(YandexTranslationApi::class.java)
 
     @Provides
     @PerApp
-    fun provideRetrofit(): Retrofit = Retrofit.Builder()
+    @YandexTranslateQualifier
+    fun provideRetrofit(
+        gsonConverterFactory: GsonConverterFactory,
+        @YandexTranslateQualifier okHttpClient: OkHttpClient
+    ): Retrofit = Retrofit.Builder()
         .baseUrl(BuildConfig.YANDEX_TRANSLATE_URL)
-        .client(getOkHttp())
-        .addConverterFactory(getGsonConverterFactory())
+        .client(okHttpClient)
+        .addConverterFactory(gsonConverterFactory)
         .build()
 
-    private fun getOkHttp(): OkHttpClient {
+    @Provides
+    @PerApp
+    @YandexTranslateQualifier
+    fun provideOkHttp(
+        @LoggingQualifier loggingInterceptor: Interceptor,
+        @YandexTranslateQualifier interceptor: Interceptor
+    ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .connectTimeout(10, TimeUnit.SECONDS)
             .writeTimeout(10, TimeUnit.SECONDS)
             .readTimeout(10, TimeUnit.SECONDS)
-            .addInterceptor(getInterceptor())
+            .addInterceptor(interceptor)
 
-        if (BuildConfig.DEBUG) builder.addInterceptor(getLoggingInterceptor())
+        if (BuildConfig.DEBUG) builder.addInterceptor(loggingInterceptor)
 
         return builder.build()
     }
 
-    private fun getInterceptor(): Interceptor = Interceptor {
+    @Provides
+    @PerApp
+    @YandexTranslateQualifier
+    fun provideInterceptor(): Interceptor = Interceptor {
         val originalRequest = it.request()
 
         val url = originalRequest.url.newBuilder()
@@ -57,9 +70,7 @@ class RetrofitYandexTranslateModule {
 
         it.proceed(newRequest)
     }
-
-    private fun getLoggingInterceptor(): Interceptor =
-        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
-
-    private fun getGsonConverterFactory(): GsonConverterFactory = GsonConverterFactory.create()
 }
+
+@Qualifier
+annotation class YandexTranslateQualifier

@@ -34,6 +34,10 @@ android {
             applicationIdSuffix ".debug"
             buildConfigField "String", "YANDEX_TRANSLATE_URL", "\"https://translate.yandex.net/api/v1.5/tr.json/\""
             buildConfigField "String", "YANDEX_TRANSLATE_KEY", "\"trnsl.1.1.20200426T142148Z.9f7a08686b6c7314.54aaf767aeac3fc452223136e3cd5f71542f1276\""
+            buildConfigField "String", "GYAZO_UPLOAD_URL", "\"https://upload.gyazo.com/\""
+            buildConfigField "String", "GYAZO_CLIENT_ID", "\"5c54eaeffc841f5556b29cc59aacb76a228d1bdb3d46c739cab4a999da40da1a\""
+            buildConfigField "String", "GYAZO_CLIENT_SECRET", "\"52f1c8604bdc83287c58a3fa28ad9c3c5f11c9f7392db597dd22bdbdbbe60942\""
+            buildConfigField "String", "GYAZO_ACCESS_TOKEN", "\"eeb0122062d460af28707eb590e4c0aec4c2025996e3a2b9b3fa22efeb46d26c\""
         }
 
         release {
@@ -41,6 +45,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "YANDEX_TRANSLATE_URL", "\"https://translate.yandex.net/api/v1.5/tr.json/\""
             buildConfigField "String", "YANDEX_TRANSLATE_KEY", "\"trnsl.1.1.20200426T142148Z.9f7a08686b6c7314.54aaf767aeac3fc452223136e3cd5f71542f1276\""
+            buildConfigField "String", "GYAZO_UPLOAD_URL", "\"https://upload.gyazo.com/\""
+            buildConfigField "String", "GYAZO_CLIENT_ID", "\"5c54eaeffc841f5556b29cc59aacb76a228d1bdb3d46c739cab4a999da40da1a\""
+            buildConfigField "String", "GYAZO_CLIENT_SECRET", "\"52f1c8604bdc83287c58a3fa28ad9c3c5f11c9f7392db597dd22bdbdbbe60942\""
+            buildConfigField "String", "GYAZO_ACCESS_TOKEN", "\"eeb0122062d460af28707eb590e4c0aec4c2025996e3a2b9b3fa22efeb46d26c\""
         }
     }
 
