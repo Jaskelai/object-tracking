@@ -14,8 +14,11 @@ class NetCommonModule {
     @PerApp
     @Provides
     @LoggingQualifier
-    fun provideLoggingInterceptor(): Interceptor =
-        HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BASIC }
+    fun provideLoggingInterceptor(): Interceptor {
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        return interceptor
+    }
 
     @PerApp
     @Provides

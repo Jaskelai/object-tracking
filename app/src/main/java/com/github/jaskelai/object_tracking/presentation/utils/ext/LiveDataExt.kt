@@ -60,3 +60,69 @@ fun <T> LiveData<T>.startWith(startingValue: T?): LiveData<T> {
     }
     return finalLiveData
 }
+
+fun <X, Y, R> zip(first: LiveData<X>, second: LiveData<Y>, zipFunction: (X?, Y?) -> R): MutableLiveData<R> {
+    val finalLiveData: MediatorLiveData<R> = MediatorLiveData()
+
+    val firstEmit: Emit<X?> = Emit()
+    val secondEmit: Emit<Y?> = Emit()
+
+    val combine: () -> Unit = {
+        if (firstEmit.emitted && secondEmit.emitted) {
+            val combined = zipFunction(firstEmit.value, secondEmit.value)
+            firstEmit.reset()
+            secondEmit.reset()
+            finalLiveData.value = combined
+        }
+    }
+
+    finalLiveData.addSource(first) { value ->
+        firstEmit.value = value
+        combine()
+    }
+    finalLiveData.addSource(second) { value ->
+        secondEmit.value = value
+        combine()
+    }
+    return finalLiveData
+}
+
+fun <X, Y, R> combineLatest(first: LiveData<X>, second: LiveData<Y>, combineFunction: (X?, Y?) -> R): MutableLiveData<R> {
+    val finalLiveData: MediatorLiveData<R> = MediatorLiveData()
+
+    val firstEmit: Emit<X?> = Emit()
+    val secondEmit: Emit<Y?> = Emit()
+
+    val combine: () -> Unit = {
+        if (firstEmit.emitted && secondEmit.emitted) {
+            val combined = combineFunction(firstEmit.value, secondEmit.value)
+            finalLiveData.value = combined
+        }
+    }
+
+    finalLiveData.addSource(first) { value ->
+        firstEmit.value = value
+        combine()
+    }
+    finalLiveData.addSource(second) { value ->
+        secondEmit.value = value
+        combine()
+    }
+    return finalLiveData
+}
+
+private class Emit<T> {
+
+    internal var emitted: Boolean = false
+
+    internal var value: T? = null
+        set(value) {
+            field = value
+            emitted = true
+        }
+
+    fun reset() {
+        value = null
+        emitted = false
+    }
+}

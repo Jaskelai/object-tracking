@@ -21,7 +21,7 @@ import dagger.Component
         NetCommonModule::class,
         NetModule::class,
         YandexTranslateNetModule::class,
-        GyazoNetModule::class
+        ImgurNetModule::class
     ]
 )
 interface AppComponent {

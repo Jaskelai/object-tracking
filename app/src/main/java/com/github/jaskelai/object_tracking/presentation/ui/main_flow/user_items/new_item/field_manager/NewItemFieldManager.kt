@@ -3,9 +3,6 @@ package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items
 import android.net.Uri
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.field.Field
 import com.github.jaskelai.object_tracking.presentation.utils.ext.isAllTrue
-import com.github.jaskelai.object_tracking.presentation.utils.ext.map
-import com.github.jaskelai.object_tracking.presentation.utils.ext.skip
-import com.github.jaskelai.object_tracking.presentation.utils.ext.startWith
 import javax.inject.Inject
 
 class NewItemFieldManager @Inject constructor() {
@@ -14,15 +11,18 @@ class NewItemFieldManager @Inject constructor() {
         const val NAME_MIN_LENGTH = 3
     }
 
-    val image = Field<Uri?>()
-    val name = Field(::validateName)
-    val description = Field<String?>()
-    val isFormValid = listOf(image.isValid, name.isValid, description.isValid)
+    val image = Field<Uri?>(::checkIsNull)
+    val name = Field(String::isNullOrEmpty, ::validateName)
+    val description = Field(String::isNullOrEmpty)
+
+    val isFormValid = listOf(image.isValid, name.isValid, description.isValid, image.initialized, name.initialized, description.initialized)
         .isAllTrue()
-        .skip(3)
 
     private fun validateName(value: String?): Boolean {
+
         return value != null && value.length >= NAME_MIN_LENGTH
     }
+
+    private fun checkIsNull(any: Any?): Boolean = any == null
 
 }

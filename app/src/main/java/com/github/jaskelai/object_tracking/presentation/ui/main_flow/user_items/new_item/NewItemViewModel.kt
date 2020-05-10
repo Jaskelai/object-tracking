@@ -1,7 +1,7 @@
 package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item
 
 import android.net.Uri
-import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.domain.interactor.PhotoInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
@@ -15,13 +15,17 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewItemViewModel @Inject constructor(
-    val newItemFieldManager: NewItemFieldManager,
+    val fieldManager: NewItemFieldManager,
 
     private val photoInteractor: PhotoInteractor,
     private val resProvider: ResourceProvider
 ) : BaseViewModel() {
 
     val reqCodePhoto = generateRandomIntReq()
+
+    val isBtnEnabled = MediatorLiveData<Boolean>().apply {
+        addSource(fieldManager.isFormValid) { isFormValid -> this.value = isFormValid }
+    }
 
     fun onPhotoClick() = navigate(
         NavigationCommand.To(
@@ -30,13 +34,18 @@ class NewItemViewModel @Inject constructor(
     )
 
     fun onSaveBtnClick() {
-
+        launch {
+            isBtnEnabled.value = false
+            fieldManager.image.fieldValue.value?.let { uri ->
+                photoInteractor.uploadImage(uri)
+            }
+        }.invokeOnCompletion { isBtnEnabled.value = true }
     }
 
     override fun onNavigationResult(value: Any) {
         value as Uri
         launch {
-            newItemFieldManager.image.fieldValue.value = value
+            fieldManager.image.fieldValue.value = value
             handleLabelingResult(photoInteractor.labelPhoto(value))
         }
     }

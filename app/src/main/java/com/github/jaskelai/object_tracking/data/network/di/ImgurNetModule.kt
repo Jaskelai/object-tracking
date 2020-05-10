@@ -1,6 +1,7 @@
 package com.github.jaskelai.object_tracking.data.network.di
 
 import com.github.jaskelai.object_tracking.BuildConfig
+import com.github.jaskelai.object_tracking.data.network.image.api.ImageUploadImgurApi
 import com.github.jaskelai.object_tracking.di.scope.PerApp
 import dagger.Module
 import dagger.Provides
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 
 @Module
-class GyazoNetModule {
+class ImgurNetModule {
 
     private companion object {
         const val HEADER_ACCESS_TOKEN = "Authorization"
@@ -20,21 +21,26 @@ class GyazoNetModule {
 
     @Provides
     @PerApp
-    @GyazoQualifier
+    fun provideImgurUploadingApi(@ImgurQualifier retrofit: Retrofit) =
+        retrofit.create(ImageUploadImgurApi::class.java)
+
+    @Provides
+    @PerApp
+    @ImgurQualifier
     fun provideRetrofit(
         gsonConverterFactory: GsonConverterFactory,
-        @GyazoQualifier okHttpClient: OkHttpClient
+        @ImgurQualifier okHttpClient: OkHttpClient
     ): Retrofit = Retrofit.Builder()
-        .baseUrl(BuildConfig.GYAZO_UPLOAD_URL)
+        .baseUrl(BuildConfig.IMGUR_UPLOAD_URL)
         .client(okHttpClient)
         .addConverterFactory(gsonConverterFactory)
         .build()
 
     @Provides
     @PerApp
-    @GyazoQualifier
+    @ImgurQualifier
     fun provideOkHttp(
-        @GyazoQualifier interceptor: Interceptor,
+        @ImgurQualifier interceptor: Interceptor,
         @LoggingQualifier loggingInterceptor: Interceptor
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
@@ -50,10 +56,10 @@ class GyazoNetModule {
 
     @Provides
     @PerApp
-    @GyazoQualifier
+    @ImgurQualifier
     fun provideInterceptor(): Interceptor = Interceptor {
         var request = it.request().newBuilder()
-            .addHeader(HEADER_ACCESS_TOKEN, "Bearer ${BuildConfig.GYAZO_ACCESS_TOKEN}")
+            .addHeader(HEADER_ACCESS_TOKEN, "Client-ID ${BuildConfig.IMGUR_CLIENT_ID}")
             .build()
 
         it.proceed(request)
@@ -61,4 +67,4 @@ class GyazoNetModule {
 }
 
 @Qualifier
-annotation class GyazoQualifier
+annotation class ImgurQualifier
