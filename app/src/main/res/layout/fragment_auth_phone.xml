@@ -72,12 +72,10 @@
             android:enabled="@{viewModel.isSendSmsButtonEnabledLiveData()}"
             android:onClick="@{() -> viewModel.onSignInButtonClicked()}"
             android:text="@string/send_sms_btn_auth_phone"
-            android:textColor="@color/selector_white_btn_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/etlPhoneNumberAuthPhone"
-            app:strokeColor="@color/selector_white_btn_background" />
+            app:layout_constraintTop_toBottomOf="@id/etlPhoneNumberAuthPhone" />
 
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/progressBarSmsAuthPhone"

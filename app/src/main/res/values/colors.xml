@@ -7,6 +7,7 @@
     <color name="color_inactive">#D1D3D4</color>
     <color name="color_default">#ffffff</color>
     <color name="color_text_default">#000000</color>
+    <color name="color_error">#FF0000</color>
 
     <!-- status bar auth -->
     <color name="color_status_bar">#27108B</color>

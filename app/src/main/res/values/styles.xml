@@ -35,8 +35,8 @@
     </style>
 
     <style name="BtnWhiteBorder" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="android:textColor">@android:color/white</item>
-        <item name="strokeColor">@android:color/white</item>
+        <item name="android:textColor">@color/selector_white_btn_background</item>
+        <item name="strokeColor">@color/selector_white_btn_background</item>
         <item name="rippleColor">@android:color/white</item>
         <item name="android:fontFamily">@font/roboto_bold</item>
         <item name="android:textSize">@dimen/text_m</item>
