@@ -27,7 +27,7 @@ class ItemRepositoryImpl @Inject constructor(
 
         val userId = auth.currentUser?.uid ?: ""
 
-        userDbReference.child(userId).setValue(item)
+        userDbReference.child(userId).child(userDbReference.push().key ?: "").setValue(item)
 
         return suspendCoroutine { cont ->
 

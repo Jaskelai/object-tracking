@@ -70,32 +70,28 @@ class PhotoRepositoryImpl @Inject constructor(
             } ?: cont.resume(Result.Error(ErrorModel(R.string.photo_not_available_choose_photo)))
         }
 
-    override suspend fun uploadPhoto(uri: Uri): Result<String, ErrorModel> {
+    override suspend fun uploadPhoto(uri: Uri): String {
         return withContext(Dispatchers.IO) {
-            try {
 
-                val result = if (uri.scheme.equals("content")) {
+            val result = if (uri.scheme.equals("content")) {
 
-                    val bytes =
-                        context.contentResolver.openInputStream(uri)?.readBytes() ?: ByteArray(0)
+                val bytes =
+                    context.contentResolver.openInputStream(uri)?.readBytes() ?: ByteArray(0)
 
-                    imageUploadImgurApi.uploadImage(
-                        bytes.toRequestBody("image/*".toMediaTypeOrNull())
-                    )
-                } else {
+                imageUploadImgurApi.uploadImage(
+                    bytes.toRequestBody("image/*".toMediaTypeOrNull())
+                )
+            } else {
 
-                    val file = uri.toFile()
+                val file = uri.toFile()
 
-                    imageUploadImgurApi.uploadImage(
-                        file.asRequestBody("image/*".toMediaTypeOrNull())
-                    )
-                }
-
-                Result.Success(result.data.link)
-            } catch (ex: Exception) {
-                Result.Error(ErrorModel(R.string.error_common))
+                imageUploadImgurApi.uploadImage(
+                    file.asRequestBody("image/*".toMediaTypeOrNull())
+                )
             }
 
+            result.data.link
         }
+
     }
 }

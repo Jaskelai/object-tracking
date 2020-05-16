@@ -50,5 +50,5 @@ class PhotoInteractor @Inject constructor(
         } else labelsResultClear as Result.Error
     }
 
-    suspend fun uploadImage(uri: Uri): Result<String, ErrorModel> = photoRepository.uploadPhoto(uri)
+    suspend fun uploadImage(uri: Uri): String = photoRepository.uploadPhoto(uri)
 }

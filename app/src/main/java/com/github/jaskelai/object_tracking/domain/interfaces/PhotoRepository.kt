@@ -15,5 +15,5 @@ interface PhotoRepository {
 
     suspend fun labelPhoto(uri: Uri): Result<List<PhotoLabel>, ErrorModel>
 
-    suspend fun uploadPhoto(uri: Uri): Result<String, ErrorModel>
+    suspend fun uploadPhoto(uri: Uri): String
 }

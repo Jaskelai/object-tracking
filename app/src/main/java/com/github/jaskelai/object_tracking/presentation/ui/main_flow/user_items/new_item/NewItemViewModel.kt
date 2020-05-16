@@ -3,9 +3,11 @@ package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items
 import android.net.Uri
 import androidx.lifecycle.MediatorLiveData
 import com.github.jaskelai.object_tracking.R
+import com.github.jaskelai.object_tracking.domain.interactor.ItemInteractor
 import com.github.jaskelai.object_tracking.domain.interactor.PhotoInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.ErrorModel
 import com.github.jaskelai.object_tracking.domain.model.common.Result
+import com.github.jaskelai.object_tracking.domain.model.item.Item
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.new_item.field_manager.NewItemFieldManager
@@ -17,6 +19,7 @@ import javax.inject.Inject
 class NewItemViewModel @Inject constructor(
     val fieldManager: NewItemFieldManager,
 
+    private val newItemInteractor: ItemInteractor,
     private val photoInteractor: PhotoInteractor,
     private val resProvider: ResourceProvider
 ) : BaseViewModel() {
@@ -36,9 +39,15 @@ class NewItemViewModel @Inject constructor(
     fun onSaveBtnClick() {
         launch {
             isBtnEnabled.value = false
-            fieldManager.image.fieldValue.value?.let { uri ->
+            val imageUrl = fieldManager.image.fieldValue.value?.let { uri ->
                 photoInteractor.uploadImage(uri)
             }
+            newItemInteractor.addItem(Item(
+                name = fieldManager.name.fieldValue.value ?: "",
+                description = fieldManager.description.fieldValue.value,
+                category = fieldManager.category.fieldValue.value ?: "",
+                imageUrl = imageUrl
+            ))
         }.invokeOnCompletion { isBtnEnabled.value = true }
     }
 
