@@ -13,6 +13,12 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.InternalCoroutinesApi
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.callbackFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
@@ -45,6 +51,42 @@ class ItemRepositoryImpl @Inject constructor(
                     userDbReference.child(userId).removeEventListener(this)
                 }
             })
+        }
+    }
+
+    @ExperimentalCoroutinesApi
+    @InternalCoroutinesApi
+    override suspend fun getUserItems(): Flow<Result<List<Item>, ErrorModel>> {
+
+        val userId = auth.currentUser?.uid ?: ""
+
+        return callbackFlow {
+
+            val listener = userDbReference.child(userId).addValueEventListener(object : ValueEventListener {
+
+                override fun onDataChange(dataSnapshot: DataSnapshot) {
+                    val result = mutableListOf<Item>()
+                    for (item in dataSnapshot.children) {
+                        val itemNet = item.getValue(ItemNet::class.java)
+                        result.add(Item(
+                            name = itemNet?.name ?: "",
+                            description = itemNet?.description,
+                            category = itemNet?.category ?: "",
+                            imageUrl = itemNet?.imageUrl
+                        ))
+                    }
+                    offer(Result.Success(result))
+                    launch {
+                        awaitClose { }
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    offer(Result.Error(ErrorModel(firebaseDBErrorMapper.execute(error))))
+                }
+            })
+
+            awaitClose { userDbReference.child(userId).removeEventListener(listener) }
         }
     }
 }
