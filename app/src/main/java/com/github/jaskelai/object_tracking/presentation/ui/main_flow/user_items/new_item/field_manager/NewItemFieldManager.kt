@@ -14,9 +14,11 @@ class NewItemFieldManager @Inject constructor() {
     val image = Field<Uri?>(::checkIsNull)
     val name = Field(String::isNullOrEmpty, ::validateName)
     val description = Field(String::isNullOrEmpty)
+    val category = Field(::checkIsNull, ::validateCategory)
 
-    val isFormValid = listOf(image.isValid, name.isValid, description.isValid, image.initialized, name.initialized, description.initialized)
-        .isAllTrue()
+    val isFormValid = listOf(image.isValid, name.isValid, description.isValid, category.isValid,
+        image.initialized, name.initialized, description.initialized, category.initialized
+    ).isAllTrue()
 
     private fun validateName(value: String?): Boolean {
 
@@ -24,5 +26,10 @@ class NewItemFieldManager @Inject constructor() {
     }
 
     private fun checkIsNull(any: Any?): Boolean = any == null
+
+    private fun validateCategory(value: String?): Boolean {
+
+        return value.isNullOrEmpty().not()
+    }
 
 }

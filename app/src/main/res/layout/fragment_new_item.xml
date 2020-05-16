@@ -103,6 +103,29 @@
                 android:layout_marginStart="@dimen/margin_m"
                 android:layout_marginTop="@dimen/margin_m"
                 android:fontFamily="@font/roboto_bold"
+                android:text="@string/category_label_new_item"
+                android:textColor="@color/color_default"
+                android:textSize="@dimen/text_m" />
+
+            <EditText
+                style="@style/NewItemEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_s"
+                android:layout_marginEnd="@dimen/margin_m"
+                android:background="@drawable/background_frame_gray"
+                android:maxLines="1"
+                android:text="@={viewModel.fieldManager.category.fieldValue}"
+                app:hasErrors="@{!viewModel.fieldManager.category.isValid}"
+                android:textColor="@color/color_default" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_m"
+                android:layout_marginTop="@dimen/margin_m"
+                android:fontFamily="@font/roboto_bold"
                 android:text="@string/description_label_new_item"
                 android:textColor="@color/color_default"
                 android:textSize="@dimen/text_m" />
