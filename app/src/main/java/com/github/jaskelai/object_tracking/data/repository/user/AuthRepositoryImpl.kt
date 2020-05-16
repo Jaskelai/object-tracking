@@ -51,6 +51,8 @@ class AuthRepositoryImpl @Inject constructor(
         sharedPrefsProvider.readString(KEY_AUTH_STATE) ?: AuthState.NOT_AUTHED.name
     )
 
+    override fun getUserId(): String = auth.currentUser?.uid ?: ""
+
     override suspend fun setBio(userBio: UserBio): Result<Unit, ErrorModel> = withContext(Dispatchers.IO) {
         auth.currentUser?.uid?.let {
             val result = networkUserDataSource.setBio(userBio, it)

@@ -18,5 +18,7 @@ interface AuthRepository {
 
     fun getAuthState(): AuthState
 
+    fun getUserId(): String
+
     suspend fun setBio(userBio: UserBio): Result<Unit, ErrorModel>
 }
