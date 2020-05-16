@@ -13,10 +13,7 @@
 
         <action
             android:id="@+id/action_userItemsFragment_to_newItemFragment"
-            app:destination="@id/newItemFragment"
-            app:enterAnim="@anim/slide_in_bottom"
-            app:exitAnim="@anim/wait"
-            app:popExitAnim="@anim/slide_out_bottom" />
+            app:destination="@id/newItemFragment" />
     </fragment>
 
     <fragment
