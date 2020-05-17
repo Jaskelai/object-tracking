@@ -1,5 +1,6 @@
 package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main
 
+import androidx.lifecycle.MutableLiveData
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.domain.interactor.ItemInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.Result
@@ -19,17 +20,20 @@ class UserItemsViewModel @Inject constructor(
 ) : BaseViewModel(), ItemClickListener<Item> {
 
     val adapter = ItemAdapter(this)
+    val isLoading = MutableLiveData(false)
 
     init {
         fetchItems()
     }
 
     private fun fetchItems() = launch {
+        isLoading.value = true
         itemInteractor.getUserItems().collect { result ->
             when (result) {
                 is Result.Success -> adapter.submitList(result.data)
                 is Result.Error -> errorMessageLiveData.value = resourceProvider.getString(R.string.error_common)
             }
+            isLoading.value = false
         }
     }
 
