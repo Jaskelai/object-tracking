@@ -6,6 +6,7 @@ import com.github.jaskelai.object_tracking.domain.interactor.ItemInteractor
 import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.domain.model.item.Item
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
+import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.common.adapter.ItemAdapter
 import com.github.jaskelai.object_tracking.presentation.ui.main_flow.common.adapter.ItemClickListener
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
@@ -36,7 +37,13 @@ class AllItemsViewModel @Inject constructor(
         }
     }
 
-    override fun omItemClick(item: Item) {
-
-    }
+    override fun omItemClick(item: Item) = navigate(
+        NavigationCommand.To(AllItemsFragmentDirections.actionAllItemsFragmentToItemDetailsFragment(
+            id = item.id,
+            name = item.name,
+            category = item.category,
+            description = item.description,
+            imageUrl = item.imageUrl
+        ))
+    )
 }

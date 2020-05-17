@@ -66,6 +66,7 @@ class ItemRepositoryImpl @Inject constructor(
                     for (item in dataSnapshot.children) {
                         val itemNet = item.getValue(ItemNet::class.java)
                         result.add(Item(
+                            id = item.key ?: "",
                             name = itemNet?.name ?: "",
                             description = itemNet?.description,
                             category = itemNet?.category ?: "",
@@ -98,6 +99,7 @@ class ItemRepositoryImpl @Inject constructor(
                         user.children.forEach { item ->
                             val itemNet = item.getValue(ItemNet::class.java)
                             result.add(Item(
+                                id = item.key ?: "",
                                 name = itemNet?.name ?: "",
                                 description = itemNet?.description,
                                 category = itemNet?.category ?: "",

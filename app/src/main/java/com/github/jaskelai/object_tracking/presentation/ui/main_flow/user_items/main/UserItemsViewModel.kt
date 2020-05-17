@@ -43,7 +43,13 @@ class UserItemsViewModel @Inject constructor(
         )
     )
 
-    override fun omItemClick(item: Item) {
-
-    }
+    override fun omItemClick(item: Item) = navigate(
+        NavigationCommand.To(UserItemsFragmentDirections.actionUserItemsFragmentToItemDetailsFragment(
+            id = item.id,
+            name = item.name,
+            category = item.category,
+            description = item.description,
+            imageUrl = item.imageUrl
+        ))
+    )
 }

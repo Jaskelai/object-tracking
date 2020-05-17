@@ -70,4 +70,6 @@
     <!--all items-->
     <string name="all_items_title">Все предметы</string>
 
+    <string name="delete_details_screen">Удалить предмет</string>
+
 </resources>

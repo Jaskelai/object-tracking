@@ -43,6 +43,7 @@ class NewItemViewModel @Inject constructor(
                 photoInteractor.uploadImage(uri)
             }
             val result = newItemInteractor.addItem(Item(
+                id = "",
                 name = fieldManager.name.fieldValue.value ?: "",
                 description = fieldManager.description.fieldValue.value,
                 category = fieldManager.category.fieldValue.value ?: "",

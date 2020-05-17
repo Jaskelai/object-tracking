@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun observeNavigation() {
         mainViewModel.isAuthed.observe(this) {
             when (it) {
-                AuthState.NOT_AUTHED -> findNavController(R.id.nav_host_fragment_main).setGraph(R.navigation.nav_graph_auth)
+                AuthState.NOT_AUTHED -> findNavController(R.id.nav_host_fragment_main).setGraph(R.navigation.nav_graph_authed)
                 AuthState.AUTHED_WITH_SMS -> findNavController(R.id.nav_host_fragment_main).setGraph(R.navigation.nav_graph_set_bio)
                 AuthState.FULL_AUTHED -> findNavController(R.id.nav_host_fragment_main).setGraph(R.navigation.nav_graph_authed)
             }

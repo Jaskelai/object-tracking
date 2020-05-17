@@ -44,6 +44,16 @@
         <item name="android:textAllCaps">false</item>
     </style>
 
+    <style name="BtnRedBorder" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">@color/color_error</item>
+        <item name="strokeColor">@color/color_error</item>
+        <item name="rippleColor">@color/color_error</item>
+        <item name="android:fontFamily">@font/roboto_bold</item>
+        <item name="android:textSize">@dimen/text_m</item>
+        <item name="android:letterSpacing">0.01</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
     <style name="EditTextLayoutWhite" parent="Widget.Design.TextInputLayout">
         <item name="boxStrokeColor">@android:color/white</item>
         <item name="errorTextAppearance">@style/ErrorText</item>

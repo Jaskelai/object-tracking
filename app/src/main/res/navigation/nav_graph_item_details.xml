@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_item_details"
+    app:startDestination="@id/itemDetailsFragment">
+
+    <fragment
+        android:id="@+id/itemDetailsFragment"
+        android:name="com.github.jaskelai.object_tracking.presentation.ui.main_flow.item_details.ItemDetailsFragment"
+        android:label="ItemDetailsFragment"
+        tools:layout="@layout/fragment_item_details">
+        <argument
+            android:name="id"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <argument
+            android:name="description"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="imageUrl"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>
