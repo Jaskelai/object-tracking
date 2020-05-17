@@ -6,12 +6,11 @@ import com.github.jaskelai.object_tracking.domain.model.common.Result
 import com.github.jaskelai.object_tracking.domain.model.item.Item
 import com.github.jaskelai.object_tracking.presentation.base.BaseViewModel
 import com.github.jaskelai.object_tracking.presentation.navigation.NavigationCommand
-import com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.adapter.ItemAdapter
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.common.adapter.ItemAdapter
 import com.github.jaskelai.object_tracking.presentation.utils.resource_provider.ResourceProvider
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
-import ru.kpfu.itis.quailly.app.ui.new_item.category.adapter.ItemClickListener
+import com.github.jaskelai.object_tracking.presentation.ui.main_flow.common.adapter.ItemClickListener
 import javax.inject.Inject
 
 class UserItemsViewModel @Inject constructor(

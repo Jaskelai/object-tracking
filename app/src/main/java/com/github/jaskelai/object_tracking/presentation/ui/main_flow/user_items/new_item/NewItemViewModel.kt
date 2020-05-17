@@ -42,12 +42,15 @@ class NewItemViewModel @Inject constructor(
             val imageUrl = fieldManager.image.fieldValue.value?.let { uri ->
                 photoInteractor.uploadImage(uri)
             }
-            newItemInteractor.addItem(Item(
+            val result = newItemInteractor.addItem(Item(
                 name = fieldManager.name.fieldValue.value ?: "",
                 description = fieldManager.description.fieldValue.value,
                 category = fieldManager.category.fieldValue.value ?: "",
                 imageUrl = imageUrl
             ))
+            when (result) {
+                is Result.Success -> navigate(NavigationCommand.Back)
+            }
         }.invokeOnCompletion { isBtnEnabled.value = true }
     }
 

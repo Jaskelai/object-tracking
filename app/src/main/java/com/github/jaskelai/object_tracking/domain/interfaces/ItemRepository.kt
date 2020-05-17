@@ -10,4 +10,6 @@ interface ItemRepository {
     suspend fun addItem(item: Item): Result<Unit, ErrorModel>
 
     suspend fun getUserItems(): Flow<Result<List<Item>, ErrorModel>>
+
+    suspend fun getAllItems(): Flow<Result<List<Item>, ErrorModel>>
 }

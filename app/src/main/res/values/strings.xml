@@ -67,4 +67,7 @@
     <string name="not_recognized_choose_photo">Не могу распознать изображение</string>
     <string name="photo_not_available_choose_photo">Изображение недоступно</string>
 
+    <!--all items-->
+    <string name="all_items_title">Все предметы</string>
+
 </resources>

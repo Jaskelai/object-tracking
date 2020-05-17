@@ -1,4 +1,4 @@
-package com.github.jaskelai.object_tracking.presentation.ui.main_flow.user_items.main.adapter
+package com.github.jaskelai.object_tracking.presentation.ui.main_flow.common.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.github.jaskelai.object_tracking.R
 import com.github.jaskelai.object_tracking.databinding.LiItemBinding
 import com.github.jaskelai.object_tracking.domain.model.item.Item
-import ru.kpfu.itis.quailly.app.ui.new_item.category.adapter.ItemClickListener
 
 class ItemAdapter (
     private val clickListener: ItemClickListener<Item>
